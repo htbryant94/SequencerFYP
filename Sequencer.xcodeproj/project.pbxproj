@@ -12,7 +12,27 @@
 		B1D4D9341E6CA3AB00A30658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D4D9321E6CA3AB00A30658 /* Main.storyboard */; };
 		B1D4D9361E6CA3AB00A30658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D4D9351E6CA3AB00A30658 /* Assets.xcassets */; };
 		B1D4D9391E6CA3AB00A30658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D4D9371E6CA3AB00A30658 /* LaunchScreen.storyboard */; };
+		B1D8A60A1E6CAA24008CAC80 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8A6091E6CAA24008CAC80 /* AudioKit.framework */; };
+		B1D8A60B1E6CAB1F008CAC80 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8A6091E6CAA24008CAC80 /* AudioKit.framework */; };
+		B1D8A60C1E6CAB1F008CAC80 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B1D8A6091E6CAA24008CAC80 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B1D8A6121E6CAB92008CAC80 /* danceSnare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A60F1E6CAB92008CAC80 /* danceSnare.mp3 */; };
+		B1D8A6131E6CAB92008CAC80 /* EDMkick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A6101E6CAB92008CAC80 /* EDMkick.mp3 */; };
+		B1D8A6141E6CAB92008CAC80 /* hihat.aif in Resources */ = {isa = PBXBuildFile; fileRef = B1D8A6111E6CAB92008CAC80 /* hihat.aif */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1D8A60D1E6CAB1F008CAC80 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B1D8A60C1E6CAB1F008CAC80 /* AudioKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B1D4D92B1E6CA3AB00A30658 /* Sequencer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sequencer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +42,10 @@
 		B1D4D9351E6CA3AB00A30658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1D4D9381E6CA3AB00A30658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D4D93A1E6CA3AB00A30658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1D8A6091E6CAA24008CAC80 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioKit.framework; path = Sequencer/AudioKit.framework; sourceTree = "<group>"; };
+		B1D8A60F1E6CAB92008CAC80 /* danceSnare.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = danceSnare.mp3; sourceTree = "<group>"; };
+		B1D8A6101E6CAB92008CAC80 /* EDMkick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EDMkick.mp3; sourceTree = "<group>"; };
+		B1D8A6111E6CAB92008CAC80 /* hihat.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = hihat.aif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D8A60B1E6CAB1F008CAC80 /* AudioKit.framework in Frameworks */,
+				B1D8A60A1E6CAA24008CAC80 /* AudioKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +66,7 @@
 			children = (
 				B1D4D92D1E6CA3AB00A30658 /* Sequencer */,
 				B1D4D92C1E6CA3AB00A30658 /* Products */,
+				B1D8A6081E6CAA23008CAC80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +87,27 @@
 				B1D4D9351E6CA3AB00A30658 /* Assets.xcassets */,
 				B1D4D9371E6CA3AB00A30658 /* LaunchScreen.storyboard */,
 				B1D4D93A1E6CA3AB00A30658 /* Info.plist */,
+				B1D8A60E1E6CAB3F008CAC80 /* Sounds */,
 			);
 			path = Sequencer;
+			sourceTree = "<group>";
+		};
+		B1D8A6081E6CAA23008CAC80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1D8A6091E6CAA24008CAC80 /* AudioKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1D8A60E1E6CAB3F008CAC80 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B1D8A60F1E6CAB92008CAC80 /* danceSnare.mp3 */,
+				B1D8A6101E6CAB92008CAC80 /* EDMkick.mp3 */,
+				B1D8A6111E6CAB92008CAC80 /* hihat.aif */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +120,7 @@
 				B1D4D9271E6CA3AB00A30658 /* Sources */,
 				B1D4D9281E6CA3AB00A30658 /* Frameworks */,
 				B1D4D9291E6CA3AB00A30658 /* Resources */,
+				B1D8A60D1E6CAB1F008CAC80 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,6 +171,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D8A6121E6CAB92008CAC80 /* danceSnare.mp3 in Resources */,
+				B1D8A6141E6CAB92008CAC80 /* hihat.aif in Resources */,
+				B1D8A6131E6CAB92008CAC80 /* EDMkick.mp3 in Resources */,
 				B1D4D9391E6CA3AB00A30658 /* LaunchScreen.storyboard in Resources */,
 				B1D4D9361E6CA3AB00A30658 /* Assets.xcassets in Resources */,
 				B1D4D9341E6CA3AB00A30658 /* Main.storyboard in Resources */,
@@ -262,6 +312,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WY35J6ST95;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sequencer",
+				);
 				INFOPLIST_FILE = Sequencer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryant.Sequencer;
@@ -275,6 +329,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WY35J6ST95;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sequencer",
+				);
 				INFOPLIST_FILE = Sequencer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryant.Sequencer;
@@ -302,6 +360,7 @@
 				B1D4D93F1E6CA3AB00A30658 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
