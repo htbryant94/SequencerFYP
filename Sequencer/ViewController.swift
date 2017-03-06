@@ -6,38 +6,15 @@ import AVFoundation
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var buttons: [UIButton] = [UIButton]()
-    var grid = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+    var grid = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var defaultSteps: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
-    // Instrument Data Arrays
-    var snareSteps: [Int] = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-    var kickSteps: [Int] = [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
-    var hihatSteps: [Int] = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     
-    // Use variable names that are relevant to the type your using. e.g. kickPlayer instead of kick. I find it helps with trying to figure out what methods they hold.
-    
-    var kickPlayer: AKAudioPlayer!
-    var kickPlayer2: AKAudioPlayer!
-    var snarePlayer: AKAudioPlayer!
-    var hihatPlayer: AKAudioPlayer!
-    
-    
-    func updateGridState() {
-        
-        for x in 0 ..< buttonArray.count {
-            
-            if(grid[x] == 0) {
-                
-                buttonArray[x].backgroundColor = UIColor.green
-                
-            } else if(grid[x] == 1) {
-                
-                buttonArray[x].backgroundColor = UIColor.black
-                
-            }
-        }
-        
-    }
+    // Initialise Classes
+    let Instrument = Instruments()
+    let Grid = GridUI()
+    let Data = InstrumentData()
+    let Sequencer = MusicSequencer()
     
     // Variables
     var startLoop = false
@@ -47,42 +24,28 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.viewDidLoad()
         
         
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+        
+        
         //Append buttons from buttonArray to buttons based on the number of buttons in the Outlet Collection
         for x in 0 ..< buttonArray.count {
             self.buttons.append(self.buttonArray[x])
         }
         
-        let kickfile = try! AKAudioFile(readFileName: "EDMkick.mp3", baseDir: .resources)
-        let kickfile2 = try! AKAudioFile(readFileName: "EDMkick.mp3", baseDir: .resources)
-        let snarefile = try! AKAudioFile(readFileName: "danceSnare.mp3", baseDir: .resources)
-        let hihatfile = try! AKAudioFile(readFileName: "hihat.aif", baseDir: .resources)
+        // Initialise Instruments
+        Instrument.kickPlayer  = try! AKAudioPlayer(file: Instrument.kickfile)
+        Instrument.kickPlayer2  = try! AKAudioPlayer(file: Instrument.kickfile)
+        Instrument.snarePlayer = try! AKAudioPlayer(file: Instrument.snarefile)
+        Instrument.hihatPlayer = try! AKAudioPlayer(file: Instrument.hihatfile)
         
-        
-        kickPlayer  = try! AKAudioPlayer(file: kickfile)
-        kickPlayer2  = try! AKAudioPlayer(file: kickfile2)
-        snarePlayer = try! AKAudioPlayer(file: snarefile)
-        hihatPlayer = try! AKAudioPlayer(file: hihatfile)
-        
-        let mixer = AKMixer(kickPlayer,kickPlayer2, snarePlayer, hihatPlayer)
+        let mixer = AKMixer(Instrument.kickPlayer,Instrument.kickPlayer2, Instrument.snarePlayer, Instrument.hihatPlayer)
         
         AudioKit.output = mixer
         AudioKit.start()
         
     }
     
-    
-    
-    // function to set tempo of Sequencer
-    func tempo (bpm: Int) -> UInt32 {
-        let tempoConvert = 60.0 / bpm
-        let IntervalBetweenBeats = UInt32(tempoConvert * 1000000)
-        return IntervalBetweenBeats
-    }
-    
     @IBOutlet weak var loopState: UILabel!
-    
-    
-    
     @IBAction func toggleLoop(_ sender: UISwitch) {
         
         if sender.isOn == true {
@@ -94,35 +57,36 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    @IBOutlet weak var button: UIButton!
-    @IBAction func playSound(_ sender: AnyObject) {
-        
-        
-        
-        //DispatchQueue.global(qos: .background).async {
-        
+    
+    func playSequencer() {
         
         repeat {
             for i in 0...15 {
                 
-                if kickSteps[i] == 1 && i % 2 == 0 {
-                    kickPlayer.play()
+                if Data.kick[i] == 1 && i % 2 == 0 {
+                    Instrument.kickPlayer.play()
                     
-                } else if kickSteps[i] == 1 {
-                    kickPlayer2.play()
+                } else if Data.kick[i] == 1 {
+                    Instrument.kickPlayer2.play()
                 }
-                if snareSteps[i] == 1 {
-                    snarePlayer.play()
+                if Data.snare[i] == 1 {
+                    Instrument.snarePlayer.play()
                 }
-                if hihatSteps[i] == 1 {
-                    hihatPlayer.play()
+                if Data.hihat[i] == 1 {
+                    Instrument.hihatPlayer.play()
                 }
-                usleep(tempo(bpm: 128))
+                usleep(Sequencer.setTempo(bpm: 128))
             }
         } while startLoop == true
         
+    }
+    
+    
+    
+    @IBOutlet weak var button: UIButton!
+    @IBAction func playSound(_ sender: AnyObject) {
         
-        //}
+        playSequencer()
         
     }
     
@@ -136,7 +100,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var label: UILabel!
     
-    var mode = ["Kick", "Snare"]
+    var mode = ["Kick", "Snare", "Hihat"]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -153,73 +117,77 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        //let previousSelection = mode[row]
-        
         label.text = mode[row]
         
         if(mode[row] == "Snare") {
             
-            print("Snare Mode Selected")
-            //print("Previous Selection: \(previousSelection)")
-            
+            print("Snare Selected")
             for x in 0 ..< 16 {
-                grid[x] = snareSteps[x]
                 
-                updateGridState()
+                grid[x] = Data.snare[x]
+                Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
             }
-            
-        } else if(mode[row] == "Kick") {
-            
-            print("Kick Mode Selected")
-            //print("Previous Selection: \(previousSelection)")
-            
-            for x in 0 ..< 16 {
-                grid[x] = kickSteps[x]
-                
-                updateGridState()
-            }
-   
         }
+        else if(mode[row] == "Kick") {
+            
+            print("Kick Selected")
+            for x in 0 ..< 16 {
+                
+                grid[x] = Data.kick[x]
+                Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+            }
+        }
+        else if(mode[row] == "Hihat") {
+            
+            print("Hihat Selected")
+            for x in 0 ..< 16 {
+                
+                grid[x] = Data.hihat[x]
+                Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+            }
+        }
+      
     } // End Picker Stuff
     
     // Grid Stuff
     
     @IBAction func checkButtonArray(_ sender: AnyObject) {
         
-        updateGridState()
+        //updateGridState()
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
     
     @IBAction func SaveArray(_ sender: AnyObject) {
+        
         if(label.text == "Snare") {
+            
             for x in 0 ..< 16 {
-                snareSteps[x] = grid[x]
-                print("snareSteps \(x) is now: \(snareSteps[x])")
+                Data.snare[x] = grid[x]
+                print("snareSteps \(x) is now: \(Data.snare[x])")
             }
-        } else if(label.text == "Kick") {
+        }
+        else if(label.text == "Kick") {
+            
             for x in 0 ..< 16 {
-                kickSteps[x] = grid[x]
-                print("kickSteps \(x) is now: \(kickSteps[x])")
+                Data.kick[x] = grid[x]
+                print("kickSteps \(x) is now: \(Data.kick[x])")
+            }
+        }
+        else if(label.text == "Hihat") {
+            
+            for x in 0 ..< 16 {
+                Data.hihat[x] = grid[x]
+                print("hihatSteps \(x) is now: \(Data.hihat[x])")
             }
         }
     }
     
     @IBAction func changeButtonState(_ sender: AnyObject) {
+        
         var value = (sender as! UIButton).tag
         value = value - 1
-        
-        if grid[value] == 0 {
-            
-            buttonArray[value].backgroundColor = UIColor.black
-            grid[value] = 1
-            
-        } else if(grid[value] == 1) {
-            
-            buttonArray[value].backgroundColor = UIColor.green
-            grid[value] = 0
-        }
-        
+        Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
     }
-    
     
     @IBAction func checkArray(_ sender: AnyObject) {
         for x in 0 ..< grid.count {
