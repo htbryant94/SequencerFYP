@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     // Variables
     var startLoop = false
+    var currentInstrumentSelection = "Nil"
     
     
     override func viewDidLoad() {
@@ -75,7 +76,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
                 if Data.hihat[i] == 1 {
                     Instrument.hihatPlayer.play()
                 }
-                usleep(Sequencer.setTempo(bpm: 128))
+                usleep(Sequencer.setTempo(bpm: Double(tempoSlider.value)))
             }
         } while startLoop == true
         
@@ -118,67 +119,68 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         label.text = mode[row]
+        currentInstrumentSelection = mode[row]
         
-        if(mode[row] == "Snare") {
+        switch mode[row] {
             
+        case "Snare":
             print("Snare Selected")
             for x in 0 ..< 16 {
-                
-                grid[x] = Data.snare[x]
-                Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+            grid[x] = Data.snare[x]
+            Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
             }
-        }
-        else if(mode[row] == "Kick") {
-            
+        case "Kick":
             print("Kick Selected")
             for x in 0 ..< 16 {
                 
                 grid[x] = Data.kick[x]
                 Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
             }
-        }
-        else if(mode[row] == "Hihat") {
-            
+        case "Hihat":
             print("Hihat Selected")
             for x in 0 ..< 16 {
                 
                 grid[x] = Data.hihat[x]
                 Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
             }
+        default:
+            print("No Intrument Selected")
         }
       
     } // End Picker Stuff
     
-    // Grid Stuff
-    
     @IBAction func checkButtonArray(_ sender: AnyObject) {
         
-        //updateGridState()
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
     
     @IBAction func SaveArray(_ sender: AnyObject) {
-        
-        if(label.text == "Snare") {
+
+        switch currentInstrumentSelection {
+            
+        case "Snare":
             
             for x in 0 ..< 16 {
                 Data.snare[x] = grid[x]
                 print("snareSteps \(x) is now: \(Data.snare[x])")
             }
-        }
-        else if(label.text == "Kick") {
+        case "Kick":
             
             for x in 0 ..< 16 {
+                
                 Data.kick[x] = grid[x]
                 print("kickSteps \(x) is now: \(Data.kick[x])")
             }
-        }
-        else if(label.text == "Hihat") {
+        case "Hihat":
             
             for x in 0 ..< 16 {
+                
                 Data.hihat[x] = grid[x]
                 print("hihatSteps \(x) is now: \(Data.hihat[x])")
             }
+        default:
+            print("No Intrument Selected")
+            
         }
     }
     
@@ -193,6 +195,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         for x in 0 ..< grid.count {
             print(grid[x])
         }
+    }
+    
+    @IBOutlet weak var tempoSlider: UISlider!
+    @IBOutlet weak var tempoLabel: UILabel!
+    
+    @IBAction func changeSliderValue(_ sender: Any) {
+        tempoLabel.text = String(tempoSlider.value)
     }
     
     // Create Array of Buttons and store in Outlet Collection

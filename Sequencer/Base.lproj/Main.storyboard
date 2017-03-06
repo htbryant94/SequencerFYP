@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7n-EV-y5m">
-                                <rect key="frame" x="115" y="423" width="144" height="30"/>
+                                <rect key="frame" x="116" y="423" width="144" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Change Button Color"/>
                                 <connections>
@@ -221,7 +221,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8v-XD-ep0">
-                                <rect key="frame" x="159" y="530" width="59" height="30"/>
+                                <rect key="frame" x="158" y="492" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play me!"/>
                                 <connections>
@@ -229,21 +229,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Looping: On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70H-sI-z0r">
-                                <rect key="frame" x="95" y="593" width="184" height="36"/>
+                                <rect key="frame" x="95" y="562" width="184" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Khf-DV-jQq">
-                                <rect key="frame" x="164" y="562" width="51" height="31"/>
+                                <rect key="frame" x="163" y="523" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="toggleLoop:" destination="BYZ-38-t0r" eventType="valueChanged" id="FbK-D0-Npf"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0T-Hs-rfW">
-                                <rect key="frame" x="150" y="499" width="74" height="30"/>
+                                <rect key="frame" x="230" y="461" width="74" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save Array"/>
                                 <connections>
@@ -251,13 +251,27 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5X-Hl-UeP">
-                                <rect key="frame" x="128" y="461" width="118" height="30"/>
+                                <rect key="frame" x="49" y="461" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Check Grid Array"/>
                                 <connections>
                                     <action selector="checkArray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eJ-V1-Z0x"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
+                                <rect key="frame" x="14" y="597" width="347" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeSliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="tpj-bR-r76"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uao-3f-7tK">
+                                <rect key="frame" x="122" y="626" width="131" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -266,6 +280,8 @@
                         <outlet property="label" destination="WWD-Km-Xiv" id="HwZ-eq-Qdy"/>
                         <outlet property="loopState" destination="70H-sI-z0r" id="Zeo-uZ-PFM"/>
                         <outlet property="picker" destination="wS6-it-R0h" id="UtM-IL-j2m"/>
+                        <outlet property="tempoLabel" destination="Uao-3f-7tK" id="gjf-eI-R00"/>
+                        <outlet property="tempoSlider" destination="iRn-r0-ZB5" id="vmP-F8-KRw"/>
                         <outletCollection property="buttonArray" destination="7qU-KO-6TO" collectionClass="NSMutableArray" id="zST-uW-jmg"/>
                         <outletCollection property="buttonArray" destination="3eB-3Y-NEo" collectionClass="NSMutableArray" id="jAe-Ya-2FV"/>
                         <outletCollection property="buttonArray" destination="jbQ-0b-ccF" collectionClass="NSMutableArray" id="S5n-pU-U56"/>
