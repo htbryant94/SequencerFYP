@@ -258,7 +258,7 @@
                                     <action selector="checkArray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eJ-V1-Z0x"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
                                 <rect key="frame" x="14" y="597" width="347" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -272,11 +272,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="15000" translatesAutoresizingMaskIntoConstraints="NO" id="dTI-Du-gh4">
+                                <rect key="frame" x="243" y="523" width="118" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeFilterValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="5zm-Bc-NF5"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-D3-9cp">
+                                <rect key="frame" x="245" y="561" width="114" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="q8v-XD-ep0" id="hr1-FS-G23"/>
+                        <outlet property="filterLabel" destination="hRd-D3-9cp" id="90D-R9-TkL"/>
+                        <outlet property="filterSlider" destination="dTI-Du-gh4" id="QRM-D5-K6K"/>
                         <outlet property="label" destination="WWD-Km-Xiv" id="HwZ-eq-Qdy"/>
                         <outlet property="loopState" destination="70H-sI-z0r" id="Zeo-uZ-PFM"/>
                         <outlet property="picker" destination="wS6-it-R0h" id="UtM-IL-j2m"/>

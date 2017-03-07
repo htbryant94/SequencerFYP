@@ -9,7 +9,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var grid = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var defaultSteps: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
-    
     // Initialise Classes
     let Instrument = Instruments()
     let Grid = GridUI()
@@ -19,12 +18,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     // Variables
     var startLoop = false
     var currentInstrumentSelection = "Nil"
+    var highPassFilter: AKHighPassFilter!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        tempoLabel.text = String(tempoSlider.value)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
         
         
@@ -41,7 +41,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         let mixer = AKMixer(Instrument.kickPlayer,Instrument.kickPlayer2, Instrument.snarePlayer, Instrument.hihatPlayer)
         
-        AudioKit.output = mixer
+        highPassFilter = AKHighPassFilter(mixer)
+        highPassFilter.cutoffFrequency = 0 // Hz
+        highPassFilter.resonance = 0 // dB
+        
+        AudioKit.output = highPassFilter
         AudioKit.start()
         
     }
@@ -82,6 +86,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
     }
     
+   
     
     
     @IBOutlet weak var button: UIButton!
@@ -203,6 +208,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBAction func changeSliderValue(_ sender: Any) {
         tempoLabel.text = String(tempoSlider.value)
     }
+    
+    @IBOutlet weak var filterSlider: UISlider!
+    @IBOutlet weak var filterLabel: UILabel!
+    
+    @IBAction func changeFilterValue(_ sender: Any) {
+        filterLabel.text = String(filterSlider.value)
+        highPassFilter.cutoffFrequency = Double(filterSlider.value)
+        
+    }
+    
     
     // Create Array of Buttons and store in Outlet Collection
     @IBOutlet var buttonArray: [UIButton]!
