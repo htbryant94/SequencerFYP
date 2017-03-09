@@ -9,6 +9,58 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var grid = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var defaultSteps: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
+    // Timer
+    var counter = 0
+    var timer = Timer()
+    var timerTempo: Double = 0.0
+
+    func TimerStart() {
+        timer.invalidate()
+        
+        timer = Timer.scheduledTimer(timeInterval: timerTempo, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    }
+    
+    func TimerStop() {
+        timer.invalidate()
+    }
+    
+    func timerAction() {
+       
+        if Data.kick[counter] == 1 && counter % 2 == 0 {
+            Instrument.kickPlayer.play()
+            
+        } else if Data.kick[counter] == 1 {
+            Instrument.kickPlayer2.play()
+        }
+        if Data.snare[counter] == 1 {
+            Instrument.snarePlayer.play()
+        }
+        if Data.hihat[counter] == 1 {
+            Instrument.hihatPlayer.play()
+        }
+        
+        print(timerTempo)
+        
+        if counter < 15 {
+            print(counter)
+            counter += 1
+        } else {
+            counter = 0
+        }
+        
+
+    }
+    
+    // Notification Center
+    
+    let myNotification = Notification.Name(rawValue: "MyNotification")
+    let nc = NotificationCenter.default
+    
+    // code block called when notification is Posted
+    func catchNotification(notification:Notification) -> Void {
+        playSequencer()
+    }
+    
     // Initialise Classes
     let Instrument = Instruments()
     let Grid = GridUI()
@@ -24,9 +76,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tempoLabel.text = String(tempoSlider.value)
+        tempoLabel.text = String(Int(tempoSlider.value))
+        timerTempo = 60.0 / Double(round(tempoSlider.value))
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
         
+        nc.addObserver(forName: myNotification, object: nil, queue: nil, using: catchNotification)
         
         //Append buttons from buttonArray to buttons based on the number of buttons in the Outlet Collection
         for x in 0 ..< buttonArray.count {
@@ -50,6 +104,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
     }
     
+
+    
     @IBOutlet weak var loopState: UILabel!
     @IBAction func toggleLoop(_ sender: UISwitch) {
         
@@ -62,38 +118,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         }
     }
     
-    
-    func playSequencer() {
-        
-        repeat {
-            for i in 0...15 {
-                
-                if Data.kick[i] == 1 && i % 2 == 0 {
-                    Instrument.kickPlayer.play()
-                    
-                } else if Data.kick[i] == 1 {
-                    Instrument.kickPlayer2.play()
-                }
-                if Data.snare[i] == 1 {
-                    Instrument.snarePlayer.play()
-                }
-                if Data.hihat[i] == 1 {
-                    Instrument.hihatPlayer.play()
-                }
-                usleep(Sequencer.setTempo(bpm: Double(tempoSlider.value)))
-            }
-        } while startLoop == true
-        
-    }
-    
-   
-    
-    
     @IBOutlet weak var button: UIButton!
     @IBAction func playSound(_ sender: AnyObject) {
         
-        playSequencer()
         
+        //nc.post(name: myNotification, object: nil)
+        TimerStart()
+//        playSequencer()
     }
     
     override func didReceiveMemoryWarning() {
@@ -131,6 +162,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         case "Snare":
             print("Snare Selected")
             for x in 0 ..< 16 {
+                
             grid[x] = Data.snare[x]
             Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
             }
@@ -159,6 +191,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
     
+    
     @IBAction func SaveArray(_ sender: AnyObject) {
 
         switch currentInstrumentSelection {
@@ -167,25 +200,24 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             
             for x in 0 ..< 16 {
                 Data.snare[x] = grid[x]
-                print("snareSteps \(x) is now: \(Data.snare[x])")
+//                print("snareSteps \(x) is now: \(Data.snare[x])")
             }
         case "Kick":
             
             for x in 0 ..< 16 {
                 
                 Data.kick[x] = grid[x]
-                print("kickSteps \(x) is now: \(Data.kick[x])")
+//                print("kickSteps \(x) is now: \(Data.kick[x])")
             }
         case "Hihat":
             
             for x in 0 ..< 16 {
                 
                 Data.hihat[x] = grid[x]
-                print("hihatSteps \(x) is now: \(Data.hihat[x])")
+//                print("hihatSteps \(x) is now: \(Data.hihat[x])")
             }
         default:
             print("No Intrument Selected")
-            
         }
     }
     
@@ -206,7 +238,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var tempoLabel: UILabel!
     
     @IBAction func changeSliderValue(_ sender: Any) {
-        tempoLabel.text = String(tempoSlider.value)
+        tempoLabel.text = String(Int(tempoSlider.value))
+        timerTempo = 60.0 / Double(round(tempoSlider.value))
     }
     
     @IBOutlet weak var filterSlider: UISlider!
