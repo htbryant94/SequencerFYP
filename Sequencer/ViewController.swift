@@ -236,6 +236,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         value = value - 1
         Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
     }
+
+    @IBAction func userTouchedGrid(_ sender: AnyObject) {
+        var value = (sender as! UIButton).tag
+        value = value - 1
+        Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
+    }
     
     @IBOutlet weak var tempoSlider: UISlider!
     @IBOutlet weak var tempoLabel: UILabel!
