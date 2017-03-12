@@ -26,11 +26,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func timerAction() {
        
-        if Data.kick[counter] == 1 && counter % 2 == 0 {
+        if Data.kick[counter] == 1 {
             Instrument.kickPlayer.play()
-            
-        } else if Data.kick[counter] == 1 {
-            Instrument.kickPlayer2.play()
         }
         if Data.snare[counter] == 1 {
             Instrument.snarePlayer.play()
@@ -58,7 +55,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     // code block called when notification is Posted
     func catchNotification(notification:Notification) -> Void {
-        playSequencer()
+        
     }
     
     // Initialise Classes
@@ -76,9 +73,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tempoLabel.text = String(Int(tempoSlider.value))
+        tempoLabel.text = String(Int(tempoSlider.value / 4))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+        
         
         nc.addObserver(forName: myNotification, object: nil, queue: nil, using: catchNotification)
         
@@ -238,7 +236,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var tempoLabel: UILabel!
     
     @IBAction func changeSliderValue(_ sender: Any) {
-        tempoLabel.text = String(Int(tempoSlider.value))
+        tempoLabel.text = String(Int(tempoSlider.value / 4))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
     }
     

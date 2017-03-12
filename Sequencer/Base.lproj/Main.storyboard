@@ -258,7 +258,7 @@
                                     <action selector="checkArray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2eJ-V1-Z0x"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="60" maxValue="240" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="400" minValue="240" maxValue="720" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
                                 <rect key="frame" x="14" y="597" width="347" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
