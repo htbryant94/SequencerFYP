@@ -116,7 +116,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     // Variables
     var startLoop = false
-    var currentInstrumentSelection = "Nil"
+    var currentInstrumentSelection = "Kick"
     var highPassFilter: AKHighPassFilter!
     
     
@@ -126,6 +126,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         initWCSession()
         
         tempoLabel.text = String(Int(tempoSlider.value / 4))
+        picker.selectRow(0, inComponent: 0, animated: true)
         timerTempo = 60.0 / Double(round(tempoSlider.value))
         Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
