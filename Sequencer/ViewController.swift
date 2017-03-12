@@ -127,7 +127,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         tempoLabel.text = String(Int(tempoSlider.value / 4))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
-        Data.resetData()
+        Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
         
         
@@ -243,35 +243,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     
-    @IBAction func SaveArray(_ sender: AnyObject) {
-
-        switch currentInstrumentSelection {
-            
-        case "Snare":
-            
-            for x in 0 ..< 16 {
-                Data.snare[x] = grid[x]
-//                print("snareSteps \(x) is now: \(Data.snare[x])")
-            }
-        case "Kick":
-            
-            for x in 0 ..< 16 {
-                
-                Data.kick[x] = grid[x]
-//                print("kickSteps \(x) is now: \(Data.kick[x])")
-            }
-        case "Hihat":
-            
-            for x in 0 ..< 16 {
-                
-                Data.hihat[x] = grid[x]
-//                print("hihatSteps \(x) is now: \(Data.hihat[x])")
-            }
-        default:
-            print("No Intrument Selected")
-        }
-    }
-    
     @IBAction func changeButtonState(_ sender: AnyObject) {
         
         var value = (sender as! UIButton).tag
@@ -294,15 +265,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     @IBAction func resetUserInput(_ sender: Any) {
-        Data.resetData()
+        
+        Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
     @IBAction func saveUserInput(_ sender: Any) {
-        Data.saveData()
-        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+        Data.saveData(gridArray: grid, current: currentInstrumentSelection)
     }
     @IBAction func loadUserInput(_ sender: Any) {
-        Data.LoadData()
+        
+        Data.LoadData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
 //    @IBOutlet weak var filterSlider: UISlider!

@@ -242,14 +242,6 @@
                                     <action selector="toggleLoop:" destination="BYZ-38-t0r" eventType="valueChanged" id="FbK-D0-Npf"/>
                                 </connections>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0T-Hs-rfW">
-                                <rect key="frame" x="230" y="461" width="74" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save Array"/>
-                                <connections>
-                                    <action selector="SaveArray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DCe-3h-qnP"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5X-Hl-UeP">
                                 <rect key="frame" x="49" y="461" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

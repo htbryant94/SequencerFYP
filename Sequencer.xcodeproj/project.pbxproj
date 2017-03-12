@@ -18,8 +18,6 @@
 		B10247411E752D1B006AEF0E /* SecondInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */; };
 		B165CECB1E6DDF3000E5468F /* InstrumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CECA1E6DDF3000E5468F /* InstrumentData.swift */; };
 		B165CECF1E6DE67400E5468F /* MusicSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CECE1E6DE67400E5468F /* MusicSequencer.swift */; };
-		B165CED31E6F20A300E5468F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CED21E6F20A300E5468F /* Constants.swift */; };
-		B1AA28051E71E04100A375D0 /* ExperimentalFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA28041E71E04100A375D0 /* ExperimentalFile.swift */; };
 		B1D4D92F1E6CA3AB00A30658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D4D92E1E6CA3AB00A30658 /* AppDelegate.swift */; };
 		B1D4D9311E6CA3AB00A30658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D4D9301E6CA3AB00A30658 /* ViewController.swift */; };
 		B1D4D9341E6CA3AB00A30658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D4D9321E6CA3AB00A30658 /* Main.storyboard */; };
@@ -103,8 +101,6 @@
 		B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondInterfaceController.swift; sourceTree = "<group>"; };
 		B165CECA1E6DDF3000E5468F /* InstrumentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentData.swift; sourceTree = "<group>"; };
 		B165CECE1E6DE67400E5468F /* MusicSequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSequencer.swift; sourceTree = "<group>"; };
-		B165CED21E6F20A300E5468F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B1AA28041E71E04100A375D0 /* ExperimentalFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentalFile.swift; sourceTree = "<group>"; };
 		B1D4D92B1E6CA3AB00A30658 /* Sequencer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sequencer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D4D92E1E6CA3AB00A30658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D4D9301E6CA3AB00A30658 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -198,9 +194,7 @@
 			children = (
 				B1D4D92E1E6CA3AB00A30658 /* AppDelegate.swift */,
 				B1D4D9301E6CA3AB00A30658 /* ViewController.swift */,
-				B165CED21E6F20A300E5468F /* Constants.swift */,
 				B165CECE1E6DE67400E5468F /* MusicSequencer.swift */,
-				B1AA28041E71E04100A375D0 /* ExperimentalFile.swift */,
 				B1D8A6171E6DBDBB008CAC80 /* GridUI.swift */,
 				B1D8A6151E6DB0A4008CAC80 /* Instruments.swift */,
 				B165CECA1E6DDF3000E5468F /* InstrumentData.swift */,
@@ -388,10 +382,8 @@
 				B1D8A6161E6DB0A4008CAC80 /* Instruments.swift in Sources */,
 				B165CECB1E6DDF3000E5468F /* InstrumentData.swift in Sources */,
 				B1D4D92F1E6CA3AB00A30658 /* AppDelegate.swift in Sources */,
-				B165CED31E6F20A300E5468F /* Constants.swift in Sources */,
 				B1D8A6181E6DBDBB008CAC80 /* GridUI.swift in Sources */,
 				B165CECF1E6DE67400E5468F /* MusicSequencer.swift in Sources */,
-				B1AA28051E71E04100A375D0 /* ExperimentalFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +637,7 @@
 				B102473B1E752C32006AEF0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B102473E1E752C32006AEF0E /* Build configuration list for PBXNativeTarget "SequencerWatchApp" */ = {
 			isa = XCConfigurationList;
@@ -653,6 +646,7 @@
 				B10247391E752C32006AEF0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1D4D9261E6CA3AB00A30658 /* Build configuration list for PBXProject "Sequencer" */ = {
 			isa = XCConfigurationList;
