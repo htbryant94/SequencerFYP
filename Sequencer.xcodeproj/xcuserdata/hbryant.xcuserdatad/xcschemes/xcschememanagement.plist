@@ -9,9 +9,24 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SequencerWatchApp (Notification).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>SequencerWatchApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B10247181E752C32006AEF0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B1D4D92A1E6CA3AB00A30658</key>
 		<dict>
 			<key>primary</key>

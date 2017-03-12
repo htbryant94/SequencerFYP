@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B102471D1E752C32006AEF0E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B102471B1E752C32006AEF0E /* Interface.storyboard */; };
+		B102471F1E752C32006AEF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B102471E1E752C32006AEF0E /* Assets.xcassets */; };
+		B10247261E752C32006AEF0E /* SequencerWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10247251E752C32006AEF0E /* SequencerWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B102472D1E752C32006AEF0E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B102472C1E752C32006AEF0E /* InterfaceController.swift */; };
+		B102472F1E752C32006AEF0E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B102472E1E752C32006AEF0E /* ExtensionDelegate.swift */; };
+		B10247311E752C32006AEF0E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247301E752C32006AEF0E /* NotificationController.swift */; };
+		B10247331E752C32006AEF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10247321E752C32006AEF0E /* Assets.xcassets */; };
+		B10247371E752C32006AEF0E /* SequencerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B10247191E752C32006AEF0E /* SequencerWatchApp.app */; };
+		B10247411E752D1B006AEF0E /* SecondInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */; };
 		B165CECB1E6DDF3000E5468F /* InstrumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CECA1E6DDF3000E5468F /* InstrumentData.swift */; };
 		B165CECF1E6DE67400E5468F /* MusicSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CECE1E6DE67400E5468F /* MusicSequencer.swift */; };
 		B165CED31E6F20A300E5468F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CED21E6F20A300E5468F /* Constants.swift */; };
@@ -26,7 +35,46 @@
 		B1D8A6181E6DBDBB008CAC80 /* GridUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8A6171E6DBDBB008CAC80 /* GridUI.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B10247271E752C32006AEF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1D4D9231E6CA3AB00A30658 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B10247241E752C32006AEF0E;
+			remoteInfo = "SequencerWatchApp Extension";
+		};
+		B10247351E752C32006AEF0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1D4D9231E6CA3AB00A30658 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B10247181E752C32006AEF0E;
+			remoteInfo = SequencerWatchApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		B102473D1E752C32006AEF0E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B10247261E752C32006AEF0E /* SequencerWatchApp Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B102473F1E752C32006AEF0E /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B10247371E752C32006AEF0E /* SequencerWatchApp.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D8A60D1E6CAB1F008CAC80 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,6 +89,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B10247191E752C32006AEF0E /* SequencerWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SequencerWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B102471C1E752C32006AEF0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		B102471E1E752C32006AEF0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B10247201E752C32006AEF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10247251E752C32006AEF0E /* SequencerWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SequencerWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B102472B1E752C32006AEF0E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		B102472C1E752C32006AEF0E /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		B102472E1E752C32006AEF0E /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		B10247301E752C32006AEF0E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		B10247321E752C32006AEF0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B10247341E752C32006AEF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondInterfaceController.swift; sourceTree = "<group>"; };
 		B165CECA1E6DDF3000E5468F /* InstrumentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentData.swift; sourceTree = "<group>"; };
 		B165CECE1E6DE67400E5468F /* MusicSequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSequencer.swift; sourceTree = "<group>"; };
 		B165CED21E6F20A300E5468F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -61,6 +121,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B10247221E752C32006AEF0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D4D9281E6CA3AB00A30658 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,10 +140,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B102471A1E752C32006AEF0E /* SequencerWatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				B102471B1E752C32006AEF0E /* Interface.storyboard */,
+				B102471E1E752C32006AEF0E /* Assets.xcassets */,
+				B10247201E752C32006AEF0E /* Info.plist */,
+			);
+			path = SequencerWatchApp;
+			sourceTree = "<group>";
+		};
+		B10247291E752C32006AEF0E /* SequencerWatchApp Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B102472C1E752C32006AEF0E /* InterfaceController.swift */,
+				B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */,
+				B102472E1E752C32006AEF0E /* ExtensionDelegate.swift */,
+				B10247301E752C32006AEF0E /* NotificationController.swift */,
+				B10247321E752C32006AEF0E /* Assets.xcassets */,
+				B10247341E752C32006AEF0E /* Info.plist */,
+				B102472A1E752C32006AEF0E /* Supporting Files */,
+			);
+			path = "SequencerWatchApp Extension";
+			sourceTree = "<group>";
+		};
+		B102472A1E752C32006AEF0E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B102472B1E752C32006AEF0E /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		B1D4D9221E6CA3AB00A30658 = {
 			isa = PBXGroup;
 			children = (
 				B1D4D92D1E6CA3AB00A30658 /* Sequencer */,
+				B102471A1E752C32006AEF0E /* SequencerWatchApp */,
+				B10247291E752C32006AEF0E /* SequencerWatchApp Extension */,
 				B1D4D92C1E6CA3AB00A30658 /* Products */,
 				B1D8A6081E6CAA23008CAC80 /* Frameworks */,
 			);
@@ -86,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				B1D4D92B1E6CA3AB00A30658 /* Sequencer.app */,
+				B10247191E752C32006AEF0E /* SequencerWatchApp.app */,
+				B10247251E752C32006AEF0E /* SequencerWatchApp Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +234,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B10247181E752C32006AEF0E /* SequencerWatchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B102473E1E752C32006AEF0E /* Build configuration list for PBXNativeTarget "SequencerWatchApp" */;
+			buildPhases = (
+				B10247171E752C32006AEF0E /* Resources */,
+				B102473D1E752C32006AEF0E /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B10247281E752C32006AEF0E /* PBXTargetDependency */,
+			);
+			name = SequencerWatchApp;
+			productName = SequencerWatchApp;
+			productReference = B10247191E752C32006AEF0E /* SequencerWatchApp.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		B10247241E752C32006AEF0E /* SequencerWatchApp Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B102473C1E752C32006AEF0E /* Build configuration list for PBXNativeTarget "SequencerWatchApp Extension" */;
+			buildPhases = (
+				B10247211E752C32006AEF0E /* Sources */,
+				B10247221E752C32006AEF0E /* Frameworks */,
+				B10247231E752C32006AEF0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SequencerWatchApp Extension";
+			productName = "SequencerWatchApp Extension";
+			productReference = B10247251E752C32006AEF0E /* SequencerWatchApp Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		B1D4D92A1E6CA3AB00A30658 /* Sequencer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1D4D93D1E6CA3AB00A30658 /* Build configuration list for PBXNativeTarget "Sequencer" */;
@@ -139,10 +276,12 @@
 				B1D4D9281E6CA3AB00A30658 /* Frameworks */,
 				B1D4D9291E6CA3AB00A30658 /* Resources */,
 				B1D8A60D1E6CAB1F008CAC80 /* Embed Frameworks */,
+				B102473F1E752C32006AEF0E /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B10247361E752C32006AEF0E /* PBXTargetDependency */,
 			);
 			name = Sequencer;
 			productName = Sequencer;
@@ -159,6 +298,16 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Harry Bryant";
 				TargetAttributes = {
+					B10247181E752C32006AEF0E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = WY35J6ST95;
+						ProvisioningStyle = Automatic;
+					};
+					B10247241E752C32006AEF0E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = WY35J6ST95;
+						ProvisioningStyle = Automatic;
+					};
 					B1D4D92A1E6CA3AB00A30658 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = WY35J6ST95;
@@ -180,11 +329,30 @@
 			projectRoot = "";
 			targets = (
 				B1D4D92A1E6CA3AB00A30658 /* Sequencer */,
+				B10247181E752C32006AEF0E /* SequencerWatchApp */,
+				B10247241E752C32006AEF0E /* SequencerWatchApp Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B10247171E752C32006AEF0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B102471F1E752C32006AEF0E /* Assets.xcassets in Resources */,
+				B102471D1E752C32006AEF0E /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B10247231E752C32006AEF0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10247331E752C32006AEF0E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D4D9291E6CA3AB00A30658 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,6 +369,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B10247211E752C32006AEF0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10247311E752C32006AEF0E /* NotificationController.swift in Sources */,
+				B102472F1E752C32006AEF0E /* ExtensionDelegate.swift in Sources */,
+				B102472D1E752C32006AEF0E /* InterfaceController.swift in Sources */,
+				B10247411E752D1B006AEF0E /* SecondInterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1D4D9271E6CA3AB00A30658 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,7 +397,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B10247281E752C32006AEF0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B10247241E752C32006AEF0E /* SequencerWatchApp Extension */;
+			targetProxy = B10247271E752C32006AEF0E /* PBXContainerItemProxy */;
+		};
+		B10247361E752C32006AEF0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B10247181E752C32006AEF0E /* SequencerWatchApp */;
+			targetProxy = B10247351E752C32006AEF0E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		B102471B1E752C32006AEF0E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B102471C1E752C32006AEF0E /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		B1D4D9321E6CA3AB00A30658 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -238,6 +438,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B10247381E752C32006AEF0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WY35J6ST95;
+				IBSC_MODULE = SequencerWatchApp_Extension;
+				INFOPLIST_FILE = SequencerWatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryant.Sequencer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		B10247391E752C32006AEF0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WY35J6ST95;
+				IBSC_MODULE = SequencerWatchApp_Extension;
+				INFOPLIST_FILE = SequencerWatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryant.Sequencer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		B102473A1E752C32006AEF0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = WY35J6ST95;
+				INFOPLIST_FILE = "SequencerWatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryant.Sequencer.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		B102473B1E752C32006AEF0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				DEVELOPMENT_TEAM = WY35J6ST95;
+				INFOPLIST_FILE = "SequencerWatchApp Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryant.Sequencer.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
 		B1D4D93B1E6CA3AB00A30658 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -368,6 +638,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B102473C1E752C32006AEF0E /* Build configuration list for PBXNativeTarget "SequencerWatchApp Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B102473A1E752C32006AEF0E /* Debug */,
+				B102473B1E752C32006AEF0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B102473E1E752C32006AEF0E /* Build configuration list for PBXNativeTarget "SequencerWatchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10247381E752C32006AEF0E /* Debug */,
+				B10247391E752C32006AEF0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		B1D4D9261E6CA3AB00A30658 /* Build configuration list for PBXProject "Sequencer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

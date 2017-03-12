@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SequencerWatchApp" customModuleProvider="target">
+                    <items>
+                        <label width="136" height="27" alignment="left" text="0" textAlignment="center" id="p15-ky-IfS"/>
+                        <group width="1" alignment="left" id="tbb-HC-4AI" userLabel="Row 1">
+                            <items>
+                                <button width="0.5" height="36" alignment="left" title="Kick" id="LHl-bN-qQW">
+                                    <connections>
+                                        <action selector="toggleKick" destination="AgC-eL-Hgc" id="362-G0-iiI"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="36" alignment="left" title="Snare" id="RM9-ys-7gm">
+                                    <connections>
+                                        <action selector="toggleSnare" destination="AgC-eL-Hgc" id="y6y-bY-xjg"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" height="40" alignment="left" id="lws-68-Eor" userLabel="Row 2">
+                            <items>
+                                <button width="0.5" height="36" alignment="left" title="HiHat" id="QYS-sn-mTM">
+                                    <connections>
+                                        <action selector="toggleHihat" destination="AgC-eL-Hgc" id="kvj-Pa-lm6"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="36" alignment="left" title="4" id="lmk-Ac-Sgl"/>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="&gt;" id="Eko-g9-IJc">
+                            <connections>
+                                <segue destination="w5j-0Q-nm9" kind="push" id="dkr-jD-Fc6"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="lblCounter" destination="p15-ky-IfS" id="nvJ-ji-8NB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Second Watch App View-->
+        <scene sceneID="G4g-Qt-ED1">
+            <objects>
+                <controller identifier="Second Watch App View" id="w5j-0Q-nm9" customClass="SecondInterfaceController" customModule="SequencerWatchApp_Extension">
+                    <items>
+                        <label width="135" height="39" alignment="left" text="0 Hz" textAlignment="center" id="Z9n-QA-eKM">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <picker height="2" alignment="left" id="x6c-W7-frG">
+                            <connections>
+                                <action selector="pickerChanged:" destination="w5j-0Q-nm9" id="Gfe-mb-gWS"/>
+                            </connections>
+                        </picker>
+                        <slider width="117" height="54" alignment="center" verticalAlignment="bottom" continuous="YES" maximum="10000" steps="100" id="uZm-8y-pKS">
+                            <connections>
+                                <action selector="filterSliderChanged:" destination="w5j-0Q-nm9" id="d3k-PE-X3G"/>
+                            </connections>
+                        </slider>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="&lt;" id="ied-bo-dq9">
+                            <connections>
+                                <segue destination="AgC-eL-Hgc" kind="push" id="bO7-yB-zMs"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="filterLabel" destination="Z9n-QA-eKM" id="dUt-FQ-GP6"/>
+                        <outlet property="filterSlider" destination="uZm-8y-pKS" id="Mvq-0L-vUF"/>
+                        <outlet property="picker" destination="x6c-W7-frG" id="JJn-RN-OKY"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="455" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="SequencerWatchApp" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>

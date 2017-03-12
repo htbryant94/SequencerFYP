@@ -2,14 +2,63 @@
 import UIKit
 import AudioKit
 import AVFoundation
+import WatchConnectivity
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, WCSessionDelegate {
+    
+    
+//    Start of WatchConnectivity
+    
+    let session = WCSession.default()
+    
+    internal func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
+    }
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    func sessionDidDeactivate(_ session: WCSession) {
+        session.activate()
+    }
+    
+    func initWCSession() {
+        session.delegate = self
+        session.activate()
+    }
+    
+    func toggleInstrument(input: String, state: Int) {
+        
+        switch input {
+            
+        case "Kick":
+            Instrument.kickPlayer.volume = Double(state)
+        case "Snare":
+            Instrument.snarePlayer.volume = Double(state)
+        case "Hihat":
+            Instrument.hihatPlayer.volume = Double(state)
+        case "Filter":
+            highPassFilter.cutoffFrequency = Double(state)
+            filterLabel.text = String(state)
+        default:
+            break
+        } // end switch
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]){
+        DispatchQueue.main.async {
+            let inputValue = message["value"] as! Int
+            let inputSource = message["Sender"] as! String
+            self.toggleInstrument(input: inputSource, state: inputValue)
+        }
+    }
+    
+//    End of WatchConnectivity
+    
+
     
     var buttons: [UIButton] = [UIButton]()
     var grid = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var defaultSteps: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
-    // Timer
+//     Start of Timer
     var counter = 0
     var timer = Timer()
     var timerTempo: Double = 0.0
@@ -44,11 +93,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         } else {
             counter = 0
         }
-        
-
     }
     
-    // Notification Center
+//    End of Timer
+    
+//     Start of Notification Center
     
     let myNotification = Notification.Name(rawValue: "MyNotification")
     let nc = NotificationCenter.default
@@ -57,6 +106,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func catchNotification(notification:Notification) -> Void {
         
     }
+    
+//    End of Notification Center
+    
     
     // Initialise Classes
     let Instrument = Instruments()
@@ -72,6 +124,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initWCSession()
         
         tempoLabel.text = String(Int(tempoSlider.value / 4))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
