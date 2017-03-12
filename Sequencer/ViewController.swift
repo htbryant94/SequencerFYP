@@ -61,14 +61,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var counter = 0
     var timer = Timer()
     var timerTempo: Double = 0.0
+    var timerIsPlaying = false
 
     func TimerStart() {
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: timerTempo, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        timerIsPlaying = true
     }
     
     func TimerStop() {
         timer.invalidate()
+        timerIsPlaying = false
     }
     
     func timerAction() {
@@ -157,26 +160,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
 
-    
-    @IBOutlet weak var loopState: UILabel!
-    @IBAction func toggleLoop(_ sender: UISwitch) {
-        
-        if sender.isOn == true {
-            loopState.text = "Looping: On"
-            startLoop = true
-        } else {
-            loopState.text = "Looping: Off"
-            startLoop = false
-        }
-    }
-    
     @IBOutlet weak var button: UIButton!
     @IBAction func playSound(_ sender: AnyObject) {
         
-        
         //nc.post(name: myNotification, object: nil)
-        TimerStart()
-//        playSequencer()
+        
+        if timerIsPlaying == false {
+            TimerStart()
+        } else {
+            TimerStop()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -187,7 +180,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     // Picker View Stuff
     
     @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var label: UILabel!
     
     var mode = ["Kick", "Snare", "Hihat"]
     
@@ -206,7 +198,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        label.text = mode[row]
         currentInstrumentSelection = mode[row]
         
         switch mode[row] {
@@ -238,11 +229,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
       
     } // End Picker Stuff
     
-    @IBAction func checkButtonArray(_ sender: AnyObject) {
-        
-        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
-    }
-    
     
     @IBAction func changeButtonState(_ sender: AnyObject) {
         
@@ -251,17 +237,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
     }
     
-    @IBAction func checkArray(_ sender: AnyObject) {
-        for x in 0 ..< grid.count {
-            print(grid[x])
-        }
-    }
-    
     @IBOutlet weak var tempoSlider: UISlider!
     @IBOutlet weak var tempoLabel: UILabel!
     
     @IBAction func changeSliderValue(_ sender: Any) {
-        tempoLabel.text = String(Int(tempoSlider.value / 4))
+        tempoLabel.text = String(Int(tempoSlider.value / 2))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
     }
     
@@ -278,16 +258,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         Data.LoadData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
-//    @IBOutlet weak var filterSlider: UISlider!
-//    @IBOutlet weak var filterLabel: UILabel!
-//    
-//    @IBAction func changeFilterValue(_ sender: Any) {
-//        filterLabel.text = String(filterSlider.value)
-//        highPassFilter.cutoffFrequency = Double(filterSlider.value)
-//        
-//    }
-    
-    
+
     // Create Array of Buttons and store in Outlet Collection
     @IBOutlet var buttonArray: [UIButton]!
     
