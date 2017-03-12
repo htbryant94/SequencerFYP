@@ -36,7 +36,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             Instrument.hihatPlayer.volume = Double(state)
         case "Filter":
             highPassFilter.cutoffFrequency = Double(state)
-            filterLabel.text = String(state)
         default:
             break
         } // end switch
@@ -65,7 +64,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     func TimerStart() {
         timer.invalidate()
-        
         timer = Timer.scheduledTimer(timeInterval: timerTempo, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     
@@ -129,6 +127,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         tempoLabel.text = String(Int(tempoSlider.value / 4))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
+        Data.resetData()
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
         
         
@@ -294,14 +293,26 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         timerTempo = 60.0 / Double(round(tempoSlider.value))
     }
     
-    @IBOutlet weak var filterSlider: UISlider!
-    @IBOutlet weak var filterLabel: UILabel!
-    
-    @IBAction func changeFilterValue(_ sender: Any) {
-        filterLabel.text = String(filterSlider.value)
-        highPassFilter.cutoffFrequency = Double(filterSlider.value)
-        
+    @IBAction func resetUserInput(_ sender: Any) {
+        Data.resetData()
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
+    @IBAction func saveUserInput(_ sender: Any) {
+        Data.saveData()
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+    }
+    @IBAction func loadUserInput(_ sender: Any) {
+        Data.LoadData()
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+    }
+//    @IBOutlet weak var filterSlider: UISlider!
+//    @IBOutlet weak var filterLabel: UILabel!
+//    
+//    @IBAction func changeFilterValue(_ sender: Any) {
+//        filterLabel.text = String(filterSlider.value)
+//        highPassFilter.cutoffFrequency = Double(filterSlider.value)
+//        
+//    }
     
     
     // Create Array of Buttons and store in Outlet Collection

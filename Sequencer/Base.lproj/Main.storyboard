@@ -272,27 +272,37 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="15000" translatesAutoresizingMaskIntoConstraints="NO" id="dTI-Du-gh4">
-                                <rect key="frame" x="243" y="523" width="118" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4Q-8S-8qD">
+                                <rect key="frame" x="266" y="511" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="RESET">
+                                    <color key="titleColor" red="1" green="0.20344881571540396" blue="0.17849893744606993" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="changeFilterValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="5zm-Bc-NF5"/>
+                                    <action selector="resetUserInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dPA-Di-VaM"/>
                                 </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-D3-9cp">
-                                <rect key="frame" x="245" y="561" width="114" height="21"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uQ-0n-vZ2">
+                                <rect key="frame" x="22" y="252" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveUserInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rbJ-SD-loN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRy-p3-JiN">
+                                <rect key="frame" x="319" y="252" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Load"/>
+                                <connections>
+                                    <action selector="loadUserInput:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lo4-Hl-jrL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="q8v-XD-ep0" id="hr1-FS-G23"/>
-                        <outlet property="filterLabel" destination="hRd-D3-9cp" id="90D-R9-TkL"/>
-                        <outlet property="filterSlider" destination="dTI-Du-gh4" id="QRM-D5-K6K"/>
                         <outlet property="label" destination="WWD-Km-Xiv" id="HwZ-eq-Qdy"/>
                         <outlet property="loopState" destination="70H-sI-z0r" id="Zeo-uZ-PFM"/>
                         <outlet property="picker" destination="wS6-it-R0h" id="UtM-IL-j2m"/>
