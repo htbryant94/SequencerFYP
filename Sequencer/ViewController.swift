@@ -120,7 +120,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 //    let Instrument = Instruments()
     let Grid = GridUI()
     let Data = InstrumentData()
-    let Sequencer = MusicSequencer()
     
     // Variables
     var startLoop = false
@@ -133,7 +132,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         initWCSession()
         
-        tempoLabel.text = String(Int(tempoSlider.value / 4))
+        tempoLabel.text = String(Int(tempoSlider.value / 2))
         picker.selectRow(0, inComponent: 0, animated: true)
         timerTempo = 60.0 / Double(round(tempoSlider.value))
         Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
