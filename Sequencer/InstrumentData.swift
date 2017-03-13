@@ -1,6 +1,12 @@
+//
+//  InstrumentData.swift
+//  Sequencer
+//
+//  Created by Harry Bryant on 05/03/2017.
+//  Copyright © 2017 Harry Bryant. All rights reserved.
+//
+
 import Foundation
-
-
 
 class InstrumentData {
     
@@ -17,6 +23,7 @@ class InstrumentData {
     var hihatSaved: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     func resetData(gridArray: inout [Int], current: String) {
+        
         kick = DEFAULT_KICK
         snare = DEFAULT_SNARE
         hihat = DEFAULT_HIHAT
@@ -55,10 +62,27 @@ class InstrumentData {
         hihatSaved = hihat
     }
     
-    func LoadData(gridArray: inout [Int], current: String) {
+    func loadData(gridArray: inout [Int], current: String) {
+        
         kick = kickSaved
         snare = snareSaved
         hihat = hihatSaved
+        
+        switch current {
+            
+        case "Kick":
+            gridArray = kick
+        case "Snare":
+            gridArray = snare
+        case "Hihat":
+            gridArray = hihat
+            
+        default:
+            break
+        }
+    }
+    
+    func loadCurrentToGrid(gridArray: inout [Int], current: String) {
         
         switch current {
             

@@ -1,17 +1,18 @@
+//
+//  GridUI.swift
+//  Sequencer
+//
+//  Created by Harry Bryant on 05/03/2017.
+//  Copyright © 2017 Harry Bryant. All rights reserved.
+//
+
 import Foundation
 import UIKit
 
 
 class GridUI {
     
-    func generateRandomColor() -> UIColor {
-        
-        let red = CGFloat(arc4random_uniform(256)) / 255.0
-        let green = CGFloat(arc4random_uniform(256)) / 255.0
-        let blue = CGFloat(arc4random_uniform(256)) / 255.0
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
+    
     
     func updateGridState(gridArray: [Int], btnArray: [UIButton]) {
         
@@ -20,7 +21,7 @@ class GridUI {
             if (gridArray[i] == 0) {
                 
                 btnArray[i].backgroundColor = UIColor.black
-                btnArray[i].alpha = 0.1
+                btnArray[i].alpha = 0.5
             }
             else if (gridArray[i] == 1) {
                 
@@ -30,7 +31,6 @@ class GridUI {
         }
         
     }
-    
     
     func updateStepValue(gridArray: inout [Int], btnArray: [UIButton], step: Int) {
         
@@ -44,12 +44,10 @@ class GridUI {
         else if (gridArray[step] == 1) {
             
             btnArray[step].backgroundColor = UIColor.black
-            btnArray[step].alpha = 0.1
+            btnArray[step].alpha = 0.5
             gridArray[step] = 0
         }
     }
-    
-    
-    
+
 }
 

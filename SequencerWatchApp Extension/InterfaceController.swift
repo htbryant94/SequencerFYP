@@ -15,6 +15,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     let session = WCSession.default()
     
+    @IBOutlet var filterButton: WKInterfaceButton!
+    
+    
     // Toggle Track Variables
     var kickState: Int = 1
     var snareState: Int = 1
@@ -34,7 +37,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var lblCounter: WKInterfaceLabel!
     
-    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -44,8 +46,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
+
         initWCSession()
+        kickButton.setBackgroundColor(watchRandColor())
+        snareButton.setBackgroundColor(watchRandColor())
+        hihatButton.setBackgroundColor(watchRandColor())
+        filterButton.setBackgroundColor(watchRandColor())
     }
     
     func initWCSession() {
@@ -58,16 +64,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         lblCounter.setText(msg)
     }
     
+    @IBOutlet var kickButton: WKInterfaceButton!
     @IBAction func toggleKick() {
         
         toggleTrack(Type: &kickState)
-        
         let msg = ["value" : kickState, "Sender": "Kick"] as [String : Any]
         
         session.sendMessage(msg, replyHandler: nil, errorHandler: nil)
-        
     }
     
+    @IBOutlet var snareButton: WKInterfaceButton!
     @IBAction func toggleSnare() {
         
         toggleTrack(Type: &snareState)
@@ -76,6 +82,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         session.sendMessage(msg, replyHandler: nil, errorHandler: nil)
     }
+    
+    @IBOutlet var hihatButton: WKInterfaceButton!
     @IBAction func toggleHihat() {
         
         toggleTrack(Type: &hihatState)

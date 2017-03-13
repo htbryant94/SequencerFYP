@@ -14,39 +14,52 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SequencerWatchApp" customModuleProvider="target">
                     <items>
-                        <label width="136" height="27" alignment="left" text="0" textAlignment="center" id="p15-ky-IfS"/>
-                        <group width="1" alignment="left" id="tbb-HC-4AI" userLabel="Row 1">
+                        <group width="1" height="0.25" alignment="left" id="tbb-HC-4AI" userLabel="Row 1">
                             <items>
-                                <button width="0.5" height="36" alignment="left" title="Kick" id="LHl-bN-qQW">
+                                <button width="0.5" height="1" alignment="left" title="Kick" id="LHl-bN-qQW">
                                     <connections>
                                         <action selector="toggleKick" destination="AgC-eL-Hgc" id="362-G0-iiI"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" height="36" alignment="left" title="Snare" id="RM9-ys-7gm">
+                                <button width="0.5" height="1" alignment="left" title="Snare" id="RM9-ys-7gm">
                                     <connections>
                                         <action selector="toggleSnare" destination="AgC-eL-Hgc" id="y6y-bY-xjg"/>
                                     </connections>
                                 </button>
                             </items>
                         </group>
-                        <group width="1" height="40" alignment="left" id="lws-68-Eor" userLabel="Row 2">
+                        <group width="1" height="0.25" alignment="left" id="lws-68-Eor" userLabel="Row 2">
                             <items>
-                                <button width="0.5" height="36" alignment="left" title="HiHat" id="QYS-sn-mTM">
+                                <button width="0.5" height="1" alignment="left" title="HiHat" id="QYS-sn-mTM">
                                     <connections>
                                         <action selector="toggleHihat" destination="AgC-eL-Hgc" id="kvj-Pa-lm6"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" height="36" alignment="left" title="4" id="lmk-Ac-Sgl"/>
+                                <button width="0.5" height="1" alignment="left" title="Button" id="lmk-Ac-Sgl"/>
                             </items>
                         </group>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="&gt;" id="Eko-g9-IJc">
-                            <connections>
-                                <segue destination="w5j-0Q-nm9" kind="push" id="dkr-jD-Fc6"/>
-                            </connections>
-                        </button>
+                        <group width="1" height="0.25" alignment="left" id="XxE-Qp-lTw" userLabel="Row 3">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="Button" id="Wlf-JV-rHD"/>
+                                <button width="0.5" height="1" alignment="left" title="Button" id="ueU-MV-ru9"/>
+                            </items>
+                        </group>
+                        <group width="1" height="0.25" alignment="left" id="MGL-mr-owf" userLabel="Row 4">
+                            <items>
+                                <button width="0.5" height="1" alignment="right" verticalAlignment="bottom" title="Filter" id="Eko-g9-IJc">
+                                    <connections>
+                                        <segue destination="w5j-0Q-nm9" kind="push" id="dkr-jD-Fc6"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="Button" id="ZZ6-UE-MWp"/>
+                            </items>
+                        </group>
                     </items>
                     <connections>
-                        <outlet property="lblCounter" destination="p15-ky-IfS" id="nvJ-ji-8NB"/>
+                        <outlet property="filterButton" destination="Eko-g9-IJc" id="rl6-tD-TvU"/>
+                        <outlet property="hihatButton" destination="QYS-sn-mTM" id="3ck-D2-imJ"/>
+                        <outlet property="kickButton" destination="LHl-bN-qQW" id="Jrj-DA-ccR"/>
+                        <outlet property="snareButton" destination="RM9-ys-7gm" id="Ijg-n6-bVg"/>
                     </connections>
                 </controller>
             </objects>

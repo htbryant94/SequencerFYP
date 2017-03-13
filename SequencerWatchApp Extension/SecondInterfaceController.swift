@@ -51,24 +51,22 @@ class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        // Configure interface objects here.
+        
         pickerItems = (0...50).map {
             let pickerItem = WKPickerItem()
             pickerItem.title = "\($0)"
             return pickerItem
         }
+        
         picker.setItems(pickerItems)
         picker.focus()
-        
-        
-        
-        // Configure interface objects here.
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         initWCSession()
-        
     }
     
     override func didDeactivate() {

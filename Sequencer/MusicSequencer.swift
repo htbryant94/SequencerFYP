@@ -1,5 +1,12 @@
-import Foundation
+//
+//  MusicSequencer.swift
+//  Sequencer
+//
+//  Created by Harry Bryant on 05/03/2017.
+//  Copyright © 2017 Harry Bryant. All rights reserved.
+//
 
+import Foundation
 
 class MusicSequencer {
     

@@ -1,8 +1,18 @@
+//
+//  ViewController.swift
+//  Sequencer
+//
+//  Created by Harry Bryant on 05/03/2017.
+//  Copyright © 2017 Harry Bryant. All rights reserved.
+//
 
 import UIKit
 import AudioKit
 import AVFoundation
 import WatchConnectivity
+
+let Instrument = Instruments()
+var highPassFilter: AKHighPassFilter!
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, WCSessionDelegate {
     
@@ -24,28 +34,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         session.activate()
     }
     
-    func toggleInstrument(input: String, state: Int) {
-        
-        switch input {
-            
-        case "Kick":
-            Instrument.kickPlayer.volume = Double(state)
-        case "Snare":
-            Instrument.snarePlayer.volume = Double(state)
-        case "Hihat":
-            Instrument.hihatPlayer.volume = Double(state)
-        case "Filter":
-            highPassFilter.cutoffFrequency = Double(state)
-        default:
-            break
-        } // end switch
-    }
-    
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]){
         DispatchQueue.main.async {
             let inputValue = message["value"] as! Int
             let inputSource = message["Sender"] as! String
-            self.toggleInstrument(input: inputSource, state: inputValue)
+            toggleInstrument(input: inputSource, state: inputValue)
         }
     }
     
@@ -58,7 +51,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var defaultSteps: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
 //     Start of Timer
-    var counter = 0
+    var stepCounter = 0
     var timer = Timer()
     var timerTempo: Double = 0.0
     var timerIsPlaying = false
@@ -75,24 +68,27 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func timerAction() {
-       
-        if Data.kick[counter] == 1 {
+        
+        if Data.kick[stepCounter] == 1 {
             Instrument.kickPlayer.play()
         }
-        if Data.snare[counter] == 1 {
+        if Data.snare[stepCounter] == 1 {
             Instrument.snarePlayer.play()
         }
-        if Data.hihat[counter] == 1 {
+        if Data.hihat[stepCounter] == 1 {
             Instrument.hihatPlayer.play()
         }
         
-        print(timerTempo)
-        
-        if counter < 15 {
-            print(counter)
-            counter += 1
+        if stepCounter < 15 {
+            
+            stepCounter += 1
+            buttonArray[stepCounter].alpha = 0.5
+            buttonArray[stepCounter-1].alpha = 1.0
         } else {
-            counter = 0
+            
+            stepCounter = 0
+            buttonArray[stepCounter].alpha = 0.5
+            buttonArray[15].alpha = 1.0
         }
     }
     
@@ -112,7 +108,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     
     // Initialise Classes
-    let Instrument = Instruments()
+//    let Instrument = Instruments()
     let Grid = GridUI()
     let Data = InstrumentData()
     let Sequencer = MusicSequencer()
@@ -120,7 +116,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     // Variables
     var startLoop = false
     var currentInstrumentSelection = "Kick"
-    var highPassFilter: AKHighPassFilter!
+//    var highPassFilter: AKHighPassFilter!
     
     
     override func viewDidLoad() {
@@ -170,6 +166,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         } else {
             TimerStop()
         }
+        
+        if stepCounter == 0 {
+            buttonArray[0].alpha = 0.5
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -199,45 +199,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         currentInstrumentSelection = mode[row]
-        
-        switch mode[row] {
-            
-        case "Snare":
-            print("Snare Selected")
-            for x in 0 ..< 16 {
                 
-            grid[x] = Data.snare[x]
-            Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
-            }
-        case "Kick":
-            print("Kick Selected")
-            for x in 0 ..< 16 {
-                
-                grid[x] = Data.kick[x]
-                Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
-            }
-        case "Hihat":
-            print("Hihat Selected")
-            for x in 0 ..< 16 {
-                
-                grid[x] = Data.hihat[x]
-                Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
-            }
-        default:
-            print("No Intrument Selected")
-        }
+        Data.loadCurrentToGrid(gridArray: &grid, current: currentInstrumentSelection)
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
       
     } // End Picker Stuff
     
     
     @IBAction func changeButtonState(_ sender: AnyObject) {
         
-        var value = (sender as! UIButton).tag
-        value = value - 1
-        Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
-    }
-
-    @IBAction func userTouchedGrid(_ sender: AnyObject) {
         var value = (sender as! UIButton).tag
         value = value - 1
         Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
@@ -255,13 +225,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+        stepCounter = 0
     }
+    
     @IBAction func saveUserInput(_ sender: Any) {
         Data.saveData(gridArray: grid, current: currentInstrumentSelection)
     }
+    
     @IBAction func loadUserInput(_ sender: Any) {
         
-        Data.LoadData(gridArray: &grid, current: currentInstrumentSelection)
+        Data.loadData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
     }
 
