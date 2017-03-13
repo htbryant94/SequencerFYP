@@ -41,10 +41,5 @@ func generateRandomColor() -> UIColor {
     return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
 }
 
-func setTempo (bpm: Double) -> UInt32 {
-    let tempoConvert = 60.0 / bpm
-    let IntervalBetweenBeats = UInt32(tempoConvert * 1000000)
-    return IntervalBetweenBeats
-}
 
 

@@ -12,8 +12,6 @@ import UIKit
 
 class GridUI {
     
-    
-    
     func updateGridState(gridArray: [Int], btnArray: [UIButton]) {
         
         for i in 0 ..< gridArray.count {
