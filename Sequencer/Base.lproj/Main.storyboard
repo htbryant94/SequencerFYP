@@ -265,7 +265,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.80318225636903551" green="0.95046988689073364" blue="1" alpha="0.90517715669014087" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="q8v-XD-ep0" id="hr1-FS-G23"/>

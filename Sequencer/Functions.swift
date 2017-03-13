@@ -18,7 +18,13 @@ func toggleInstrument(input: String, state: Int) {
     case "Snare":
         Instrument.snarePlayer.volume = Double(state)
     case "Hihat":
-        Instrument.hihatPlayer.volume = Double(state)
+        Instrument.hihatPlayer.volume = Double(state) * 0.25
+    case "Tom":
+        Instrument.tomPlayer.volume = Double(state)
+    case "Clap":
+        Instrument.clapPlayer.volume = Double(state) * 0.5
+    case "Crash":
+        Instrument.cymPlayer.volume = Double(state) * 0.1
     case "Filter":
         highPassFilter.cutoffFrequency = Double(state)
     default:

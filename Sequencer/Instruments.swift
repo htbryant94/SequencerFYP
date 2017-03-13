@@ -13,17 +13,20 @@ import AudioKit
 
 class Instruments {
 
-    // Use variable names that are relevant to the type your using. e.g. kickPlayer instead of kick. I find it helps with trying to figure out what methods they hold.
-
     var kickPlayer: AKAudioPlayer!
-    var kickPlayer2: AKAudioPlayer!
     var snarePlayer: AKAudioPlayer!
     var hihatPlayer: AKAudioPlayer!
+    var tomPlayer: AKAudioPlayer!
+    var clapPlayer: AKAudioPlayer!
+    var cymPlayer: AKAudioPlayer!
 
-    let kickfile = try! AKAudioFile(readFileName: "EDMkick.mp3", baseDir: .resources)
-    let snarefile = try! AKAudioFile(readFileName: "danceSnare.mp3", baseDir: .resources)
-    let hihatfile = try! AKAudioFile(readFileName: "hihat.aif", baseDir: .resources)
-        
+    let kickfile = try! AKAudioFile(readFileName: "kickSample.wav", baseDir: .resources)
+    let snarefile = try! AKAudioFile(readFileName: "snareSample.wav", baseDir: .resources)
+    let hihatfile = try! AKAudioFile(readFileName: "hihatSample.wav", baseDir: .resources)
+    let tomfile = try! AKAudioFile(readFileName: "tomSample.wav", baseDir: .resources)
+    let clapfile = try! AKAudioFile(readFileName: "clapSample.wav", baseDir: .resources)
+    let cymfile = try! AKAudioFile(readFileName: "cymSample.wav", baseDir: .resources)
+    
         }
 
 

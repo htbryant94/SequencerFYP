@@ -78,6 +78,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if Data.hihat[stepCounter] == 1 {
             Instrument.hihatPlayer.play()
         }
+        if Data.tom[stepCounter] == 1 {
+            Instrument.tomPlayer.play()
+        }
+        if Data.clap[stepCounter] == 1 {
+            Instrument.clapPlayer.play()
+        }
+        if Data.cym[stepCounter] == 1 {
+            Instrument.cymPlayer.play()
+        }
         
         if stepCounter < 15 {
             
@@ -130,7 +139,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
         
-        
         nc.addObserver(forName: myNotification, object: nil, queue: nil, using: catchNotification)
         
         //Append buttons from buttonArray to buttons based on the number of buttons in the Outlet Collection
@@ -140,15 +148,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         // Initialise Instruments
         Instrument.kickPlayer  = try! AKAudioPlayer(file: Instrument.kickfile)
-        Instrument.kickPlayer2  = try! AKAudioPlayer(file: Instrument.kickfile)
         Instrument.snarePlayer = try! AKAudioPlayer(file: Instrument.snarefile)
         Instrument.hihatPlayer = try! AKAudioPlayer(file: Instrument.hihatfile)
+        Instrument.tomPlayer = try! AKAudioPlayer(file: Instrument.tomfile)
+        Instrument.clapPlayer = try! AKAudioPlayer(file: Instrument.clapfile)
+        Instrument.cymPlayer = try! AKAudioPlayer(file: Instrument.cymfile)
         
-        let mixer = AKMixer(Instrument.kickPlayer,Instrument.kickPlayer2, Instrument.snarePlayer, Instrument.hihatPlayer)
+        let mixer = AKMixer(Instrument.kickPlayer, Instrument.snarePlayer, Instrument.hihatPlayer, Instrument.tomPlayer, Instrument.clapPlayer, Instrument.cymPlayer)
         
         highPassFilter = AKHighPassFilter(mixer)
         highPassFilter.cutoffFrequency = 0 // Hz
         highPassFilter.resonance = 0 // dB
+        
+        Instrument.hihatPlayer.volume = 0.25
+        Instrument.clapPlayer.volume = 0.5
+        Instrument.cymPlayer.volume = 0.1
         
         AudioKit.output = highPassFilter
         AudioKit.start()
@@ -181,7 +195,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBOutlet weak var picker: UIPickerView!
     
-    var mode = ["Kick", "Snare", "Hihat"]
+    var mode = ["Kick", "Snare", "Hihat", "Tom", "Clap", "Crash"]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
