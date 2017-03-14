@@ -230,9 +230,18 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var tempoLabel: UILabel!
     
     @IBAction func changeSliderValue(_ sender: Any) {
+        
         tempoLabel.text = String(Int(tempoSlider.value / 2))
         timerTempo = 60.0 / Double(round(tempoSlider.value))
+        
+        if timerIsPlaying == false {
+            TimerStart()
+        } else {
+            TimerStop()
+            TimerStart()
+        }
     }
+    
     
     @IBAction func resetUserInput(_ sender: Any) {
         

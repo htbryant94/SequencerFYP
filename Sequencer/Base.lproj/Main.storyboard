@@ -224,7 +224,7 @@
                                     <action selector="playSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="er4-Si-mKK"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="200" minValue="150" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="200" minValue="150" maxValue="360" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-r0-ZB5">
                                 <rect key="frame" x="43" y="597" width="288" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
