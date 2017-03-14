@@ -63,7 +63,7 @@
                                         <segue destination="w5j-0Q-nm9" kind="push" id="dkr-jD-Fc6"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" height="1" alignment="left" title="Button" id="ZZ6-UE-MWp"/>
+                                <button width="0.5" height="1" alignment="left" title="N/A" id="ZZ6-UE-MWp"/>
                             </items>
                         </group>
                     </items>

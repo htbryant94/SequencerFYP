@@ -30,6 +30,9 @@ class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
         let stringValue = String(value)
         self.filterLabel.setText(stringValue)
         filterValue = value
+        
+        let msg = ["value" : filterValue, "Sender": "Filter"] as [String : Any]
+        session.sendMessage(msg, replyHandler: nil, errorHandler: nil)
     }
     
     @IBOutlet var picker: WKInterfacePicker!
