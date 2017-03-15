@@ -15,7 +15,7 @@
 		B10247311E752C32006AEF0E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247301E752C32006AEF0E /* NotificationController.swift */; };
 		B10247331E752C32006AEF0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10247321E752C32006AEF0E /* Assets.xcassets */; };
 		B10247371E752C32006AEF0E /* SequencerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B10247191E752C32006AEF0E /* SequencerWatchApp.app */; };
-		B10247411E752D1B006AEF0E /* SecondInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */; };
+		B10247411E752D1B006AEF0E /* HighPassFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247401E752D1B006AEF0E /* HighPassFilterViewController.swift */; };
 		B165CECB1E6DDF3000E5468F /* InstrumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CECA1E6DDF3000E5468F /* InstrumentData.swift */; };
 		B1B042421E76A004005A9373 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B042411E76A004005A9373 /* Functions.swift */; };
 		B1B042481E773283005A9373 /* WatchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B042471E773283005A9373 /* WatchFunctions.swift */; };
@@ -26,6 +26,7 @@
 		B1B042531E774AC5005A9373 /* cymSample.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1B042521E774AC5005A9373 /* cymSample.wav */; };
 		B1B042551E774ACB005A9373 /* clapSample.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1B042541E774ACB005A9373 /* clapSample.wav */; };
 		B1B042591E77504B005A9373 /* tomSample.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1B042581E77504B005A9373 /* tomSample.wav */; };
+		B1D316721E79E38C00F118DA /* EqualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D316711E79E38C00F118DA /* EqualizerViewController.swift */; };
 		B1D4D92F1E6CA3AB00A30658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D4D92E1E6CA3AB00A30658 /* AppDelegate.swift */; };
 		B1D4D9311E6CA3AB00A30658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D4D9301E6CA3AB00A30658 /* ViewController.swift */; };
 		B1D4D9341E6CA3AB00A30658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D4D9321E6CA3AB00A30658 /* Main.storyboard */; };
@@ -103,7 +104,7 @@
 		B10247301E752C32006AEF0E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		B10247321E752C32006AEF0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B10247341E752C32006AEF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondInterfaceController.swift; sourceTree = "<group>"; };
+		B10247401E752D1B006AEF0E /* HighPassFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighPassFilterViewController.swift; sourceTree = "<group>"; };
 		B165CECA1E6DDF3000E5468F /* InstrumentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentData.swift; sourceTree = "<group>"; };
 		B1B042411E76A004005A9373 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		B1B042471E773283005A9373 /* WatchFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchFunctions.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		B1B042521E774AC5005A9373 /* cymSample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cymSample.wav; sourceTree = "<group>"; };
 		B1B042541E774ACB005A9373 /* clapSample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clapSample.wav; sourceTree = "<group>"; };
 		B1B042581E77504B005A9373 /* tomSample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tomSample.wav; sourceTree = "<group>"; };
+		B1D316711E79E38C00F118DA /* EqualizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerViewController.swift; sourceTree = "<group>"; };
 		B1D4D92B1E6CA3AB00A30658 /* Sequencer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sequencer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D4D92E1E6CA3AB00A30658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D4D9301E6CA3AB00A30658 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				B102472C1E752C32006AEF0E /* InterfaceController.swift */,
-				B10247401E752D1B006AEF0E /* SecondInterfaceController.swift */,
+				B10247401E752D1B006AEF0E /* HighPassFilterViewController.swift */,
+				B1D316711E79E38C00F118DA /* EqualizerViewController.swift */,
 				B1B042471E773283005A9373 /* WatchFunctions.swift */,
 				B102472E1E752C32006AEF0E /* ExtensionDelegate.swift */,
 				B10247301E752C32006AEF0E /* NotificationController.swift */,
@@ -384,10 +387,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10247311E752C32006AEF0E /* NotificationController.swift in Sources */,
+				B1D316721E79E38C00F118DA /* EqualizerViewController.swift in Sources */,
 				B102472F1E752C32006AEF0E /* ExtensionDelegate.swift in Sources */,
 				B102472D1E752C32006AEF0E /* InterfaceController.swift in Sources */,
 				B1B042491E773283005A9373 /* WatchFunctions.swift in Sources */,
-				B10247411E752D1B006AEF0E /* SecondInterfaceController.swift in Sources */,
+				B10247411E752D1B006AEF0E /* HighPassFilterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

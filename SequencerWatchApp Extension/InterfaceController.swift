@@ -27,29 +27,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var filterButton: WKInterfaceButton!
     
-    // Toggle Track Functions
-//    func toggleTrack(type: inout Int, btn: WKInterfaceButton) {
-//        if type == 0 {
-//            type = 1
-//            btn.setAlpha(1.0)
-//        } else {
-//            type = 0
-//            btn.setAlpha(0.5)
-//        }
-//    }
-//    
-//    func checkCurrentToggleState(type: Int, btn: WKInterfaceButton) {
-//        if type == 1 {
-//            btn.setAlpha(1.0)
-//        } else {
-//            btn.setAlpha(0.5)
-//        }
-//    }
-    
     internal func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
     }
-    
-    @IBOutlet var lblCounter: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -60,6 +39,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        func initWCSession() {
+            session.delegate = self
+            session.activate()
+        }
 
         initWCSession()
         
@@ -75,15 +59,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         filterButton.setBackgroundColor(watchRandColor())
     }
     
-    func initWCSession() {
-        session.delegate = self
-        session.activate()
-    }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]){
-        let msg = message["ValueSentFromiPhone"] as! String
-        lblCounter.setText(msg)
-    }
     
     @IBOutlet var kickButton: WKInterfaceButton!
     @IBAction func toggleKick() {

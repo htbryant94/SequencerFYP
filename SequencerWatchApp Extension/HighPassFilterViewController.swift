@@ -1,5 +1,5 @@
 //
-//  SecondInterfaceController.swift
+//  HighPassFilterViewController.swift
 //  Sequencer
 //
 //  Created by Harry Bryant on 12/03/2017.
@@ -14,7 +14,7 @@ var filterValue = 0
 var savedFilterValue: Int!
 var pickedItem: WKPickerItem!
 
-class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
+class HighPassFilterViewController: WKInterfaceController, WCSessionDelegate {
     
     // Watch Session
     let session = WCSession.default()
@@ -29,6 +29,7 @@ class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var filterSlider: WKInterfaceSlider!
     @IBAction func filterSliderChanged(_ value: Int) {
+        
         let stringValue = String(value)
         self.filterLabel.setText(stringValue)
         filterValue = value
@@ -75,11 +76,6 @@ class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
         filterLabel.setText(String(filterValue))
         filterSlider.setValue(Float(filterValue))
         picker.setSelectedItemIndex(filterValue / 200)
-    }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
     }
     
 }

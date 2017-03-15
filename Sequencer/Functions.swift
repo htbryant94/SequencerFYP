@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func toggleInstrument(input: String, state: Int) {
+func sentFromWatch(input: String, state: Int) {
     
     switch input {
         
@@ -27,10 +27,18 @@ func toggleInstrument(input: String, state: Int) {
         Instrument.cymPlayer.volume = Double(state) * 0.1
     case "Filter":
         highPassFilter.cutoffFrequency = Double(state)
+    case "bassEQ":
+        bassEQ.gain = Double(state)
+    case "midEQ":
+        midEQ.gain = Double(state)
+    case "trebleEQ":
+        trebleEQ.gain = Double(state)
     default:
         break
     } // end switch
 }
+
+
 
 func generateRandomColor() -> UIColor {
     

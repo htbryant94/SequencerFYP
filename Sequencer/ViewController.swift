@@ -13,6 +13,9 @@ import WatchConnectivity
 
 let Instrument = Instruments()
 var highPassFilter: AKHighPassFilter!
+var bassEQ: AKEqualizerFilter!
+var midEQ: AKEqualizerFilter!
+var trebleEQ: AKEqualizerFilter!
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, WCSessionDelegate {
     
@@ -38,7 +41,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         DispatchQueue.main.async {
             let inputValue = message["value"] as! Int
             let inputSource = message["Sender"] as! String
-            toggleInstrument(input: inputSource, state: inputValue)
+            sentFromWatch(input: inputSource, state: inputValue)
         }
     }
     
@@ -137,15 +140,22 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         let mixer = AKMixer(Instrument.kickPlayer, Instrument.snarePlayer, Instrument.hihatPlayer, Instrument.tomPlayer, Instrument.clapPlayer, Instrument.cymPlayer)
         
+        // Initialise HPF Settings
         highPassFilter = AKHighPassFilter(mixer)
         highPassFilter.cutoffFrequency = 0 // Hz
         highPassFilter.resonance = 0 // dB
+        
+        // Initialise Equalizer Settings
+        bassEQ = AKEqualizerFilter(highPassFilter, centerFrequency: 50, bandwidth: 100, gain: 1.0)
+        midEQ = AKEqualizerFilter(bassEQ, centerFrequency: 350, bandwidth: 300, gain: 1.0)
+        trebleEQ = AKEqualizerFilter(midEQ, centerFrequency: 5000, bandwidth: 1000, gain: 1.0)
+        
         
         Instrument.hihatPlayer.volume = 0.25
         Instrument.clapPlayer.volume = 0.5
         Instrument.cymPlayer.volume = 0.1
         
-        AudioKit.output = highPassFilter
+        AudioKit.output = trebleEQ
         AudioKit.start()
         
     }
