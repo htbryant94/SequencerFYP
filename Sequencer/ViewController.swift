@@ -224,6 +224,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         var value = (sender as! UIButton).tag
         value = value - 1
         Grid.updateStepValue(gridArray: &grid, btnArray: buttonArray, step: value)
+        Data.saveData(gridArray: grid, current: currentInstrumentSelection)
     }
     
     @IBOutlet weak var tempoSlider: UISlider!

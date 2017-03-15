@@ -10,7 +10,9 @@ import WatchKit
 import WatchConnectivity
 import Foundation
 
-var filterValue: Int!
+var filterValue = 0
+var savedFilterValue: Int!
+var pickedItem: WKPickerItem!
 
 class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
     
@@ -37,9 +39,9 @@ class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet var picker: WKInterfacePicker!
     var pickerItems: [WKPickerItem]?
-    
     @IBAction func pickerChanged(_ value: Int) {
-        let pickedItem = pickerItems![value]
+        
+        pickedItem = pickerItems![value]
         if let pickedValue = Int(pickedItem.title!) {
             filterValue = pickedValue * 200
             filterLabel.setText(String(filterValue))
@@ -70,6 +72,9 @@ class SecondInterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         initWCSession()
+        filterLabel.setText(String(filterValue))
+        filterSlider.setValue(Float(filterValue))
+        picker.setSelectedItemIndex(filterValue / 200)
     }
     
     override func didDeactivate() {

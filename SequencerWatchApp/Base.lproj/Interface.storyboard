@@ -63,7 +63,7 @@
                                         <segue destination="w5j-0Q-nm9" kind="push" id="dkr-jD-Fc6"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" height="1" alignment="left" title="N/A" id="ZZ6-UE-MWp"/>
+                                <button width="0.5" height="1" alignment="left" hidden="YES" title="N/A" id="ZZ6-UE-MWp"/>
                             </items>
                         </group>
                     </items>
@@ -93,7 +93,7 @@
                                 <action selector="pickerChanged:" destination="w5j-0Q-nm9" id="Gfe-mb-gWS"/>
                             </connections>
                         </picker>
-                        <slider width="117" height="54" alignment="center" verticalAlignment="bottom" continuous="YES" maximum="10000" steps="100" id="uZm-8y-pKS">
+                        <slider width="136" height="38" alignment="center" verticalAlignment="bottom" continuous="YES" maximum="10000" steps="100" id="uZm-8y-pKS">
                             <connections>
                                 <action selector="filterSliderChanged:" destination="w5j-0Q-nm9" id="d3k-PE-X3G"/>
                             </connections>
