@@ -100,33 +100,17 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             buttonArray[15].alpha = 1.0
         }
     }
-    
 //    End of Timer
-    
-//     Start of Notification Center
-    
-    let myNotification = Notification.Name(rawValue: "MyNotification")
-    let nc = NotificationCenter.default
-    
-    // code block called when notification is Posted
-    func catchNotification(notification:Notification) -> Void {
-        
-    }
-    
-//    End of Notification Center
     
     
     // Initialise Classes
-//    let Instrument = Instruments()
     let Grid = GridUI()
     let Data = InstrumentData()
     
     // Variables
     var startLoop = false
     var currentInstrumentSelection = "Kick"
-//    var highPassFilter: AKHighPassFilter!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,8 +121,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         timerTempo = 60.0 / Double(round(tempoSlider.value))
         Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
         Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
-        
-        nc.addObserver(forName: myNotification, object: nil, queue: nil, using: catchNotification)
         
         //Append buttons from buttonArray to buttons based on the number of buttons in the Outlet Collection
         for x in 0 ..< buttonArray.count {

@@ -10,34 +10,41 @@ import WatchKit
 import WatchConnectivity
 import Foundation
 
-
+// Toggle Track Variables
+var kickState: Int = 1
+var snareState: Int = 1
+var hihatState: Int = 1
+var tomState: Int = 1
+var clapState: Int = 1
+var cymState: Int = 1
 
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     let session = WCSession.default()
     
+    var toggleStateArray: [Int]!
+    
     @IBOutlet var filterButton: WKInterfaceButton!
     
-    // Toggle Track Variables
-    var kickState: Int = 1
-    var snareState: Int = 1
-    var hihatState: Int = 1
-    var tomState: Int = 1
-    var clapState: Int = 1
-    var cymState: Int = 1
-    
-    
-    // Toggle Track Function
-    func toggleTrack(Type: inout Int, btn: WKInterfaceButton) {
-        if Type == 0 {
-            Type = 1
-            btn.setAlpha(1.0)
-        } else {
-            Type = 0
-            btn.setAlpha(0.5)
-        }
-    }
+    // Toggle Track Functions
+//    func toggleTrack(type: inout Int, btn: WKInterfaceButton) {
+//        if type == 0 {
+//            type = 1
+//            btn.setAlpha(1.0)
+//        } else {
+//            type = 0
+//            btn.setAlpha(0.5)
+//        }
+//    }
+//    
+//    func checkCurrentToggleState(type: Int, btn: WKInterfaceButton) {
+//        if type == 1 {
+//            btn.setAlpha(1.0)
+//        } else {
+//            btn.setAlpha(0.5)
+//        }
+//    }
     
     internal func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
     }
@@ -55,12 +62,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         super.willActivate()
 
         initWCSession()
-        kickButton.setBackgroundColor(watchRandColor())
-        snareButton.setBackgroundColor(watchRandColor())
-        hihatButton.setBackgroundColor(watchRandColor())
-        tomButton.setBackgroundColor(watchRandColor())
-        clapButton.setBackgroundColor(watchRandColor())
-        cymButton.setBackgroundColor(watchRandColor())
+        
+        let trackButtonArray: [WKInterfaceButton] = [kickButton, snareButton, hihatButton, tomButton, clapButton, cymButton]
+        toggleStateArray = [kickState, snareState, hihatState, tomState, clapState, cymState]
+        
+        for x in 0...5 {
+            
+            trackButtonArray[x].setBackgroundColor(watchRandColor())
+            checkCurrentToggleState(type: toggleStateArray[x], btn: trackButtonArray[x])
+        }
+        
         filterButton.setBackgroundColor(watchRandColor())
     }
     
@@ -77,7 +88,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var kickButton: WKInterfaceButton!
     @IBAction func toggleKick() {
         
-        toggleTrack(Type: &kickState, btn: kickButton)
+        toggleTrack(type: &kickState, btn: kickButton)
         
         let msg = ["value" : kickState, "Sender": "Kick"] as [String : Any]
         
@@ -87,7 +98,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var snareButton: WKInterfaceButton!
     @IBAction func toggleSnare() {
         
-        toggleTrack(Type: &snareState, btn: snareButton)
+        toggleTrack(type: &snareState, btn: snareButton)
         
         let msg = ["value" : snareState, "Sender": "Snare"] as [String : Any]
         
@@ -97,7 +108,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var hihatButton: WKInterfaceButton!
     @IBAction func toggleHihat() {
         
-        toggleTrack(Type: &hihatState, btn: hihatButton)
+        toggleTrack(type: &hihatState, btn: hihatButton)
         
         let msg = ["value" : hihatState, "Sender": "Hihat"] as [String : Any]
         
@@ -107,7 +118,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var tomButton: WKInterfaceButton!
     @IBAction func toggleTom() {
         
-        toggleTrack(Type: &tomState, btn: tomButton)
+        toggleTrack(type: &tomState, btn: tomButton)
         
         let msg = ["value" : tomState, "Sender": "Tom"] as [String : Any]
         
@@ -117,7 +128,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var clapButton: WKInterfaceButton!
     @IBAction func toggleClap() {
         
-        toggleTrack(Type: &clapState, btn: clapButton)
+        toggleTrack(type: &clapState, btn: clapButton)
         
         let msg = ["value" : clapState, "Sender": "Clap"] as [String : Any]
         
@@ -127,7 +138,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var cymButton: WKInterfaceButton!
     @IBAction func toggleCym() {
         
-        toggleTrack(Type: &cymState, btn: cymButton)
+        toggleTrack(type: &cymState, btn: cymButton)
         
         let msg = ["value" : cymState, "Sender": "Crash"] as [String : Any]
         
