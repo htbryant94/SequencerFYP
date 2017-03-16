@@ -48,8 +48,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
 //    End of WatchConnectivity
     
-
-    
     var buttons: [UIButton] = [UIButton]()
     var grid = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var defaultSteps: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -114,15 +112,55 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     // Variables
     var startLoop = false
     var currentInstrumentSelection = "Kick"
+    
+    // Setup of PickerView
+    
+    @IBOutlet weak var picker: UIPickerView!
+    
+    var mode = ["Kick", "Snare", "Hihat", "Tom", "Clap", "Crash"]
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return mode[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = mode[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 20.0)!,NSForegroundColorAttributeName:UIColor.white])
+        return myTitle
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return mode.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        currentInstrumentSelection = mode[row]
+        
+        Data.loadCurrentToGrid(gridArray: &grid, current: currentInstrumentSelection)
+        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
+        
+    } // End of PickerView
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//         Disable Application Sleep after inactivity
+        //DATA IS INITIALISED HERE UPON APP LAUNCH
+        
+        // Disable Application Sleep after inactivity
         UIApplication.shared.isIdleTimerDisabled = true
         
         initWCSession()
         
+        
+        // Setup and load default data
+        Data.savePerformance(gridArray: grid, current: currentInstrumentSelection)
         tempoLabel.text = "\(String(Int(tempoSlider.value / 2))) BPM"
         picker.selectRow(0, inComponent: 0, animated: true)
         timerTempo = 60.0 / Double(round(tempoSlider.value))
@@ -164,10 +202,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         AudioKit.output = Reverb
         AudioKit.start()
-        
     }
     
-
+    
     @IBOutlet weak var button: UIButton!
     @IBAction func playSound(_ sender: AnyObject) {
         
@@ -183,40 +220,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             buttonArray[0].alpha = 0.5
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // Picker View Stuff
-    
-    @IBOutlet weak var picker: UIPickerView!
-    
-    var mode = ["Kick", "Snare", "Hihat", "Tom", "Clap", "Crash"]
-    
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mode[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mode.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        currentInstrumentSelection = mode[row]
-                
-        Data.loadCurrentToGrid(gridArray: &grid, current: currentInstrumentSelection)
-        Grid.updateGridState(gridArray: grid, btnArray: buttonArray)
-      
-    } // End Picker Stuff
-    
     
     @IBAction func changeButtonState(_ sender: AnyObject) {
         

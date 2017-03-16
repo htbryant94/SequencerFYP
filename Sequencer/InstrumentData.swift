@@ -17,12 +17,12 @@ class InstrumentData {
     var clap: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var cym: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
-    let DEFAULT_KICK: [Int] = [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
-    let DEFAULT_SNARE: [Int] = [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0]
-    let DEFAULT_HIHAT: [Int] = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
-    let DEFAULT_TOM: [Int] = [0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0]
-    let DEFAULT_CLAP: [Int] = [0,0,1,0,0,0,0,1,0,0,1,0,1,0,0,0]
-    let DEFAULT_CYM: [Int] = [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]
+    let DEFAULT_KICK: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let DEFAULT_SNARE: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let DEFAULT_HIHAT: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let DEFAULT_TOM: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let DEFAULT_CLAP: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    let DEFAULT_CYM: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
     var kickSaved: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var snareSaved: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
