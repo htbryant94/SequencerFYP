@@ -17,6 +17,8 @@
 		B10247371E752C32006AEF0E /* SequencerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B10247191E752C32006AEF0E /* SequencerWatchApp.app */; };
 		B10247411E752D1B006AEF0E /* HighPassFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10247401E752D1B006AEF0E /* HighPassFilterViewController.swift */; };
 		B165CECB1E6DDF3000E5468F /* InstrumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B165CECA1E6DDF3000E5468F /* InstrumentData.swift */; };
+		B1805DF71E7B2C5D00077147 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B1805DF51E7B2C5D00077147 /* Pause.png */; };
+		B1805DF81E7B2C5D00077147 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = B1805DF61E7B2C5D00077147 /* Play.png */; };
 		B1B042421E76A004005A9373 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B042411E76A004005A9373 /* Functions.swift */; };
 		B1B042481E773283005A9373 /* WatchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B042471E773283005A9373 /* WatchFunctions.swift */; };
 		B1B042491E773283005A9373 /* WatchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B042471E773283005A9373 /* WatchFunctions.swift */; };
@@ -107,6 +109,8 @@
 		B10247341E752C32006AEF0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10247401E752D1B006AEF0E /* HighPassFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighPassFilterViewController.swift; sourceTree = "<group>"; };
 		B165CECA1E6DDF3000E5468F /* InstrumentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentData.swift; sourceTree = "<group>"; };
+		B1805DF51E7B2C5D00077147 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		B1805DF61E7B2C5D00077147 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		B1B042411E76A004005A9373 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		B1B042471E773283005A9373 /* WatchFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchFunctions.swift; sourceTree = "<group>"; };
 		B1B0424C1E773ED7005A9373 /* kickSample.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kickSample.wav; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B1805DF91E7B2C6200077147 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B1805DF51E7B2C5D00077147 /* Pause.png */,
+				B1805DF61E7B2C5D00077147 /* Play.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		B1D4D9221E6CA3AB00A30658 = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +231,7 @@
 				B1D4D9351E6CA3AB00A30658 /* Assets.xcassets */,
 				B1D4D9371E6CA3AB00A30658 /* LaunchScreen.storyboard */,
 				B1D4D93A1E6CA3AB00A30658 /* Info.plist */,
+				B1805DF91E7B2C6200077147 /* Images */,
 				B1D8A60E1E6CAB3F008CAC80 /* Sounds */,
 			);
 			path = Sequencer;
@@ -374,10 +388,12 @@
 				B1B0424D1E773ED7005A9373 /* kickSample.wav in Resources */,
 				B1B0424F1E7742C3005A9373 /* hihatSample.wav in Resources */,
 				B1B042511E7742C9005A9373 /* snareSample.wav in Resources */,
+				B1805DF71E7B2C5D00077147 /* Pause.png in Resources */,
 				B1B042591E77504B005A9373 /* tomSample.wav in Resources */,
 				B1B042551E774ACB005A9373 /* clapSample.wav in Resources */,
 				B1D4D9391E6CA3AB00A30658 /* LaunchScreen.storyboard in Resources */,
 				B1D4D9361E6CA3AB00A30658 /* Assets.xcassets in Resources */,
+				B1805DF81E7B2C5D00077147 /* Play.png in Resources */,
 				B1D4D9341E6CA3AB00A30658 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

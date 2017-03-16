@@ -123,7 +123,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         initWCSession()
         
-        tempoLabel.text = String(Int(tempoSlider.value / 2))
+        tempoLabel.text = "\(String(Int(tempoSlider.value / 2))) BPM"
         picker.selectRow(0, inComponent: 0, animated: true)
         timerTempo = 60.0 / Double(round(tempoSlider.value))
         Data.resetData(gridArray: &grid, current: currentInstrumentSelection)
@@ -171,12 +171,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var button: UIButton!
     @IBAction func playSound(_ sender: AnyObject) {
         
-        //nc.post(name: myNotification, object: nil)
-        
         if timerIsPlaying == false {
             TimerStart()
+            self.button.setImage(UIImage(named:"Pause.png"), for: UIControlState.normal)
         } else {
             TimerStop()
+            self.button.setImage(UIImage(named:"Play.png"), for: UIControlState.normal)
         }
         
         if stepCounter == 0 {
@@ -231,11 +231,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func changeSliderValue(_ sender: Any) {
         
-        tempoLabel.text = String(Int(tempoSlider.value / 2))
+        let tempoLabelValue = String(Int(tempoSlider.value / 2))
+        tempoLabel.text = "\(tempoLabelValue) BPM"
         timerTempo = 60.0 / Double(round(tempoSlider.value))
         
         if timerIsPlaying == false {
             TimerStart()
+            button.setImage(UIImage(named:"Pause.png"), for: UIControlState.normal)
         } else {
             TimerStop()
             TimerStart()
