@@ -33,6 +33,15 @@ func sentFromWatch(input: String, state: Int) {
         midEQ.gain = Double(state)
     case "trebleEQ":
         trebleEQ.gain = Double(state)
+    case "Small Room":
+        Reverb.loadFactoryPreset(.smallRoom)
+        Reverb.dryWetMix = Double(state) * 0.1
+    case "Medium Chamber":
+        Reverb.loadFactoryPreset(.mediumChamber)
+        Reverb.dryWetMix = Double(state) * 0.1
+    case "Large Room":
+        Reverb.loadFactoryPreset(.largeRoom)
+        Reverb.dryWetMix = Double(state) * 0.1
     default:
         break
     } // end switch

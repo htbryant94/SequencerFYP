@@ -16,6 +16,7 @@ var highPassFilter: AKHighPassFilter!
 var bassEQ: AKEqualizerFilter!
 var midEQ: AKEqualizerFilter!
 var trebleEQ: AKEqualizerFilter!
+var Reverb: AKReverb!
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, WCSessionDelegate {
     
@@ -150,12 +151,15 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         midEQ = AKEqualizerFilter(bassEQ, centerFrequency: 350, bandwidth: 300, gain: 1.0)
         trebleEQ = AKEqualizerFilter(midEQ, centerFrequency: 5000, bandwidth: 1000, gain: 1.0)
         
+        // Initialise Reverb Settings
+        Reverb = AKReverb(trebleEQ)
+        Reverb.dryWetMix = 0.0
         
         Instrument.hihatPlayer.volume = 0.25
         Instrument.clapPlayer.volume = 0.5
         Instrument.cymPlayer.volume = 0.1
         
-        AudioKit.output = trebleEQ
+        AudioKit.output = Reverb
         AudioKit.start()
         
     }

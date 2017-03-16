@@ -66,13 +66,15 @@ class HighPassFilterViewController: WKInterfaceController, WCSessionDelegate {
         }
         
         picker.setItems(pickerItems)
-        picker.focus()
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
         initWCSession()
+        picker.focus()
+        
         filterLabel.setText(String(filterValue))
         filterSlider.setValue(Float(filterValue))
         picker.setSelectedItemIndex(filterValue / 200)

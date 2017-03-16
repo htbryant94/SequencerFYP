@@ -18,6 +18,11 @@ class EqualizerViewController: WKInterfaceController, WCSessionDelegate {
     
     // Watch Connectivity Setup
     let session = WCSession.default()
+    
+    func initWCSession() {
+        session.delegate = self
+        session.activate()
+    }
     internal func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
     }
     
@@ -32,12 +37,7 @@ class EqualizerViewController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        func initWCSession() {
-            session.delegate = self
-            session.activate()
-        }
         initWCSession()
-        
         
         bassSlider.setValue(Float(bassGain * 10))
         midSlider.setValue(Float(midGain * 10))

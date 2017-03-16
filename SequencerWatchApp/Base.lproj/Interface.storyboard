@@ -56,8 +56,13 @@
                                 </button>
                             </items>
                         </group>
-                        <group width="1" height="0.25" alignment="left" id="MGL-mr-owf" userLabel="Row 4">
+                        <group width="1" height="0.20000000000000001" alignment="left" verticalAlignment="bottom" id="MGL-mr-owf" userLabel="Row 4">
                             <items>
+                                <button width="0.5" height="1" alignment="left" title="Reverb" id="TSg-8h-06i">
+                                    <connections>
+                                        <segue destination="JHc-IN-eOo" kind="push" id="LI5-G4-fHh"/>
+                                    </connections>
+                                </button>
                                 <button width="0.5" height="1" alignment="right" verticalAlignment="bottom" title="Filter" id="Eko-g9-IJc">
                                     <connections>
                                         <segue destination="w5j-0Q-nm9" kind="push" id="dkr-jD-Fc6"/>
@@ -133,7 +138,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="433" y="344"/>
+            <point key="canvasLocation" x="345" y="344"/>
         </scene>
         <!--Third Watch App View-->
         <scene sceneID="0Fm-yw-Rqj">
@@ -192,7 +197,11 @@
                                         <segue destination="w5j-0Q-nm9" kind="push" id="chu-jR-9bO"/>
                                     </connections>
                                 </button>
-                                <button width="0.5" height="1" alignment="left" title="Reverb" id="EIM-kN-Oxc"/>
+                                <button width="0.5" height="1" alignment="left" title="Reverb" id="EIM-kN-Oxc">
+                                    <connections>
+                                        <segue destination="JHc-IN-eOo" kind="push" id="T7S-ys-RaA"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
@@ -203,7 +212,65 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="787" y="345"/>
+            <point key="canvasLocation" x="592" y="344"/>
+        </scene>
+        <!--Fourth Watch App View-->
+        <scene sceneID="2Qg-t3-2zF">
+            <objects>
+                <controller identifier="Fourth Watch App View" id="JHc-IN-eOo" customClass="ReverbViewController" customModule="SequencerWatchApp_Extension">
+                    <items>
+                        <group width="1" height="0.10000000000000001" alignment="left" id="5Hk-h1-HDb" userLabel="Row 1">
+                            <items>
+                                <label width="1" height="1" alignment="left" text="Room" textAlignment="center" id="ziP-dA-ooX"/>
+                            </items>
+                        </group>
+                        <group width="1" height="0.40000000000000002" alignment="left" id="Ufu-gY-n37" userLabel="Row 2">
+                            <items>
+                                <picker height="1" alignment="left" id="3Q1-mc-7K0">
+                                    <connections>
+                                        <action selector="reverbPickerValueChanged:" destination="JHc-IN-eOo" id="O3p-43-eV3"/>
+                                    </connections>
+                                </picker>
+                            </items>
+                        </group>
+                        <group width="1" height="0.10000000000000001" alignment="left" id="Nrj-L7-Nyu" userLabel="Row 3">
+                            <items>
+                                <label width="1" height="1" alignment="left" text="Mix" textAlignment="center" id="uRg-iY-vUA"/>
+                            </items>
+                        </group>
+                        <group width="1" height="0.20000000000000001" alignment="left" id="Up4-Tl-IfP" userLabel="Row 4">
+                            <items>
+                                <slider width="1" height="1" alignment="left" maximum="100" steps="10" id="Rho-RN-8rj">
+                                    <connections>
+                                        <action selector="reverbSliderValueChanged:" destination="JHc-IN-eOo" id="Ayc-qG-tQN"/>
+                                    </connections>
+                                </slider>
+                            </items>
+                        </group>
+                        <group width="1" height="0.20000000000000001" alignment="left" id="MwM-bZ-Qs6" userLabel="Row 5">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="EQ" id="f7I-rZ-GUd">
+                                    <connections>
+                                        <segue destination="Emm-Vk-zCN" kind="push" id="va7-RK-48Y"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="Tracks" id="UrD-5s-y7r">
+                                    <connections>
+                                        <segue destination="AgC-eL-Hgc" kind="push" id="SFk-Fe-zo2"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="DryWetMixLabel" destination="uRg-iY-vUA" id="CAh-OD-Sdd"/>
+                        <outlet property="reverbLabel" destination="ziP-dA-ooX" id="yZn-Uv-gPX"/>
+                        <outlet property="reverbPicker" destination="3Q1-mc-7K0" id="VPy-K0-hYy"/>
+                        <outlet property="reverbSlider" destination="Rho-RN-8rj" id="DqP-k0-D9T"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="820" y="344"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -230,6 +297,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="SFk-Fe-zo2"/>
+        <segue reference="T7S-ys-RaA"/>
+        <segue reference="va7-RK-48Y"/>
         <segue reference="chu-jR-9bO"/>
     </inferredMetricsTieBreakers>
 </document>

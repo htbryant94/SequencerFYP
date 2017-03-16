@@ -55,8 +55,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             trackButtonArray[x].setBackgroundColor(watchRandColor())
             checkCurrentToggleState(type: toggleStateArray[x], btn: trackButtonArray[x])
         }
-        
-        filterButton.setBackgroundColor(watchRandColor())
     }
     
     
