@@ -31,6 +31,13 @@ class InstrumentData {
     var clapSaved: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     var cymSaved: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
+    var kickSavedPerformance: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var snareSavedPerformance: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var hihatSavedPerformance: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var tomSavedPerformance: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var clapSavedPerformance: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var cymSavedPerformance: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
     func resetData(gridArray: inout [Int], current: String) {
         
         kick = DEFAULT_KICK
@@ -89,14 +96,44 @@ class InstrumentData {
         cymSaved = cym
     }
     
+    func savePerformance(gridArray: [Int], current: String) {
+        
+        switch current {
+            
+        case "Kick":
+            kick = gridArray
+        case "Snare":
+            snare = gridArray
+        case "Hihat":
+            hihat = gridArray
+        case "Tom":
+            tom = gridArray
+        case "Clap":
+            clap = gridArray
+        case "Crash":
+            cym = gridArray
+            
+        default:
+            break
+        }
+        
+        kickSavedPerformance = kick
+        snareSavedPerformance = snare
+        hihatSavedPerformance = hihat
+        tomSavedPerformance = tom
+        clapSavedPerformance = clap
+        cymSavedPerformance = cym
+        
+    }
+    
     func loadData(gridArray: inout [Int], current: String) {
         
-        kick = kickSaved
-        snare = snareSaved
-        hihat = hihatSaved
-        tom = tomSaved
-        clap = clapSaved
-        cym = cymSaved
+        kick = kickSavedPerformance
+        snare = snareSavedPerformance
+        hihat = hihatSavedPerformance
+        tom = tomSavedPerformance
+        clap = clapSavedPerformance
+        cym = cymSavedPerformance
         
         switch current {
             

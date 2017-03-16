@@ -118,6 +118,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//         Disable Application Sleep after inactivity
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         initWCSession()
         
         tempoLabel.text = String(Int(tempoSlider.value / 2))
@@ -248,7 +251,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     @IBAction func saveUserInput(_ sender: Any) {
-        Data.saveData(gridArray: grid, current: currentInstrumentSelection)
+        Data.savePerformance(gridArray: grid, current: currentInstrumentSelection)
     }
     
     @IBAction func loadUserInput(_ sender: Any) {
