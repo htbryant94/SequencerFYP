@@ -3,6 +3,9 @@
 Drum Sequencer App written in Swift 3.0 for a final year project. The application supports a dual-interface communication
 between an iPhone & an Apple Watch. 
 
+- iPhone application should be built on an iPhone 7 Standard Device or Simulator
+- Watch application should be built on an Apple Watch 38mm or 42mm Device or Simulator (Note: Crown control will not work on simulator, use sliders and touchpad scroll instead)
+
 ## iPhone Application User Manual
 
 #### Instrument Selection: 
