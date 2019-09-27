@@ -17,7 +17,7 @@ var pickedItem: WKPickerItem!
 class HighPassFilterViewController: WKInterfaceController, WCSessionDelegate {
     
     // Watch Session
-    let session = WCSession.default()
+    let session = WCSession.default
     
     internal func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
     }

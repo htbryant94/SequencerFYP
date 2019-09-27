@@ -21,7 +21,7 @@ var cymState: Int = 1
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
-    let session = WCSession.default()
+    let session = WCSession.default
     
     var toggleStateArray: [Int]!
     

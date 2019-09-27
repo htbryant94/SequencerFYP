@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
 //    Start of WatchConnectivity
     
-    let session = WCSession.default()
+    let session = WCSession.default
     
     internal func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
     }
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         timerIsPlaying = false
     }
     
-    func timerAction() {
+    @objc func timerAction() {
         
         if Data.kick[stepCounter] == 1 {
             Instrument.kickPlayer.play()
@@ -130,7 +130,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = mode[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 20.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.font:UIFont(name: "Avenir Next", size: 20.0)!,NSAttributedString.Key.foregroundColor:UIColor.white])
         return myTitle
     }
     
@@ -201,7 +201,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         Instrument.cymPlayer.volume = 0.1
         
         AudioKit.output = Reverb
-        AudioKit.start()
+        try! AudioKit.start()
     }
     
     
@@ -210,10 +210,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         if timerIsPlaying == false {
             TimerStart()
-            self.button.setImage(UIImage(named:"Pause.png"), for: UIControlState.normal)
+            self.button.setImage(UIImage(named:"Pause.png"), for: .normal)
         } else {
             TimerStop()
-            self.button.setImage(UIImage(named:"Play.png"), for: UIControlState.normal)
+            self.button.setImage(UIImage(named:"Play.png"), for: .normal)
         }
         
         if stepCounter == 0 {
@@ -240,7 +240,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         if timerIsPlaying == false {
             TimerStart()
-            button.setImage(UIImage(named:"Pause.png"), for: UIControlState.normal)
+            button.setImage(UIImage(named:"Pause.png"), for: .normal)
         } else {
             TimerStop()
             TimerStart()

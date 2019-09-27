@@ -17,7 +17,7 @@ var trebleGain: Int = 0
 class EqualizerViewController: WKInterfaceController, WCSessionDelegate {
     
     // Watch Connectivity Setup
-    let session = WCSession.default()
+    let session = WCSession.default
     
     func initWCSession() {
         session.delegate = self
